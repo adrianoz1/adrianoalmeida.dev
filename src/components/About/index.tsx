@@ -14,14 +14,12 @@ export default function About() {
       mx="auto"      
       justify="space-between"
       direction={{ base: "column-reverse", md: "row" }}
-      w="100%"
       px="6"
       pt="10"
       maxWidth={1480}
     >
       <Stack
         spacing={4}
-        w={{ base: "100%" }}
         borderRadius="2xl"
         padding="4"
         backgroundColor="gray.800"
