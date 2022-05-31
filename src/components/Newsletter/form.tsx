@@ -1,8 +1,10 @@
-import { Button, FormControl, FormErrorMessage, FormLabel, HStack, Input, Stack, VStack } from "@chakra-ui/react"
-import { Field, Form, Formik,  } from "formik"
+import { Button, FormControl, HStack, Input, useToast } from "@chakra-ui/react"
+import { Field, Form, Formik } from "formik"
 
+type RegisterStatus = "success"|"error";
 
 export default function NewsletterForm() {
+  const toast = useToast()
 
   function validate(value: string) {
     let error
@@ -19,7 +21,7 @@ export default function NewsletterForm() {
        initialValues={{
          email: '',
        }}
-       onSubmit={values => {
+       onSubmit={(values, {resetForm}) => {
         const JSONdata = JSON.stringify(values)
         const endpoint = '/api/newsletter'
         const options = {
@@ -30,27 +32,40 @@ export default function NewsletterForm() {
           body: JSONdata,
         }
         fetch(endpoint, options).then(response => {
-          console.log(response)
+          let title = "E-mail cadastrado com successo!";
+          let status: RegisterStatus = "success";
+
+          if (response.status !== 201) {
+            title = "Erro interno. Tente novamente mais tarde.";
+            status = "error";
+          }
+
+          toast({
+            title,
+            status,
+            isClosable: true,
+          })
+
+          resetForm()
         })
        }}
      >
-       {({ errors, touched, isValidating }) => (
-           <Form>
-           <HStack>
+      {({ errors, touched, isValidating }) => (
+        <Form>
+          <HStack>
             <Field name='email' validate={validate}>
-                {({ field, form }: any) => (
-                  <FormControl isInvalid={form.errors.email && form.touched.email}>
-                    <Input 
-                      {...field} 
-                      variant="filled" 
-                      id='email' 
-                      placeholder='Informe seu e-mail'
-                      backgroundColor="gray.800"
-                    />
-                  </FormControl>
-                )}
-              </Field>
-  
+              {({ field, form }: any) => (
+                <FormControl isInvalid={form.errors.email && form.touched.email}>
+                  <Input 
+                    {...field} 
+                    variant="filled" 
+                    id='email' 
+                    placeholder='Informe seu e-mail'
+                    backgroundColor="gray.800"
+                  />
+                </FormControl>
+              )}
+            </Field>
             <Button 
                 type="submit" 
                 mt="4"
@@ -60,11 +75,9 @@ export default function NewsletterForm() {
                 variant="outline"
               >
                 Enviar
-              </Button>
-            </HStack>
-
-            {errors.email && touched.email && <div>{errors.email}</div>}
-
+            </Button>
+          </HStack>
+          {errors.email && touched.email && <div>{errors.email}</div>}
          </Form>
        )}
      </Formik>
