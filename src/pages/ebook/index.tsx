@@ -13,7 +13,7 @@ const Ebook: NextPage = () => {
         subtitle="Conheça as habilidades indispensáveis para acelerar o seu processo de contração na oportunidade que sempre sonhou! "
         title="O caminho mais fácil para conseguir a primeira oportunidade em programação!"
         key="1"
-        image="https://s3publicimage.s3.amazonaws.com/book.png" />
+        image="https://s3publicimage.s3.amazonaws.com/ebook-mockup.png" />
 
       <Stack padding="10">
         <Heading
