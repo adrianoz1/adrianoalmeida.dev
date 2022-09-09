@@ -1,4 +1,4 @@
-import { Flex, Avatar, Container } from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import { Header } from '../components/Header'
 import Hero from '../components/Hero'
