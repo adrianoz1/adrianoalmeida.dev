@@ -5,6 +5,9 @@ import {
   Image,
   Heading,
   Stack,
+  Link,
+  Button,
+  WrapItem,
 } from "@chakra-ui/react"
 
 interface HeroProps {
@@ -59,6 +62,15 @@ export default function Ebook({
         >
           {subtitle}
         </Heading>
+        <Link _hover={{
+          textDecoration: 'none'
+        }} href='https://pay.kiwify.com.br/9ZrEXrg' isExternal>
+          <WrapItem>
+            <Button colorScheme='yellow' _hover={{
+              bg: "#8b782d"
+            }}>COMPRAR AGORA</Button>
+          </WrapItem>
+        </Link>
       </Stack>
       <Box w={{ base: "80%", sm: "80%", md: "35%", lg: "30%" }}  >
         <Image src={image} size="full" />

@@ -1,4 +1,4 @@
-import { Avatar, Box, Container, Flex, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react"
+import { Avatar, Box, Button, Center, Container, Flex, Heading, Link, SimpleGrid, Stack, Text, WrapItem } from "@chakra-ui/react"
 import { NextPage } from "next"
 import { Header } from "../../components/Header"
 import EbookComponent from "../../components/Ebook"
@@ -10,7 +10,7 @@ const Ebook: NextPage = () => {
       <Header />
 
       <EbookComponent
-        subtitle="Conheça as habilidades indispensáveis para acelerar o seu processo de contração na oportunidade que sempre sonhou! "
+        subtitle="Conheça as habilidades indispensáveis para acelerar o seu processo de contratação na oportunidade que sempre sonhou! "
         title="O caminho mais fácil para conseguir a primeira oportunidade em programação!"
         key="1"
         image="https://s3publicimage.s3.amazonaws.com/ebook-mockup.png" />
@@ -86,7 +86,7 @@ const Ebook: NextPage = () => {
           lineHeight={1.5}
           textAlign={["center", "center", "left", "left"]}
         >
-          Se você tem intenção de facilitar o seu processo de contratação na área de programação, então esse livro vai te ensinar algumas facilidades que eu aprendi com muita experiência e mão na massa.
+          Se você tem intenção de facilitar o seu processo de contratação na área de programação, então esse ebook vai te ensinar algumas facilidades que eu aprendi com muita experiência e mão na massa.
           
         </Heading>
 
@@ -105,7 +105,7 @@ const Ebook: NextPage = () => {
           color="primary.800"
           textAlign={["center", "center"]}
         >
-          Para quem é esse livro?
+          Para quem é esse ebook?
         </Heading>
 
         <SimpleGrid columns={[1]} spacing='40px'>
@@ -133,7 +133,7 @@ const Ebook: NextPage = () => {
             >
               Devs iniciantes
             </Heading>
-            O livro é perfeito para quem está trabalhando com programação e quer saber como acelerar o seu processo de desenvolvimento profissional e, além disso, desfrutar dos altos salários que a área proporciona
+            O ebook é perfeito para quem está trabalhando com programação e quer saber como acelerar o seu processo de desenvolvimento profissional e, além disso, desfrutar dos altos salários que a área proporciona
           </Box>
           <Box borderRadius="2xl" backgroundColor="gray.800" padding={4} textAlign="center" minHeight='80px'>
             <Heading
@@ -149,6 +149,17 @@ const Ebook: NextPage = () => {
             Em pouco tempo você vai perceber que para atuar na área de tecnologia não basta ter conhecimentos técnicos, é necessário desenvolver outras habilidades que vão te destacar entre a concorrência. Neste ebook, de forma simples e direta, vou te ensinar todas elas. 
           </Box>
         </SimpleGrid>
+        <Center h={"40px"} paddingTop={"60px"}>
+          <Link _hover={{
+            textDecoration: 'none'
+          }} href='https://pay.kiwify.com.br/9ZrEXrg' isExternal>
+            <WrapItem>
+              <Button colorScheme='yellow' _hover={{
+                bg: "#8b782d"
+              }}>COMPRAR AGORA</Button>
+            </WrapItem>
+          </Link>
+        </Center>
     
       </Stack>
 
