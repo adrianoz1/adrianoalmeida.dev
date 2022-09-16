@@ -33,12 +33,12 @@ export default function Footer() {
         <Stack padding="10">
           <Heading
             as="h3"
-            size="4xl"
+            size="2xl"
             fontWeight="bold"
             color="primary.800"
             textAlign={["center", "center"]}
           >
-            Bora bater um papo?
+            🙋🏽‍♂️ Bora bater um papo?
           </Heading>
         </Stack>
         <HStack>

@@ -23,7 +23,7 @@ const Ebook: NextPage = () => {
           color="primary.800"
           textAlign={["center", "center"]}
         >
-          O que você vai aprender?
+          📚 O que você vai aprender? 
         </Heading>
 
         <SimpleGrid columns={[1, 2, 3]} spacing='40px'>
@@ -48,7 +48,7 @@ const Ebook: NextPage = () => {
           color="primary.800"
           textAlign={["center", "center"]}
         >
-          Para quem é esse ebook?
+          🤔 Para quem é esse ebook?
         </Heading>
 
         <SimpleGrid columns={[1]} spacing='40px'>
