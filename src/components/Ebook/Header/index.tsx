@@ -53,7 +53,7 @@ export default function Ebook({
           >
             <Stack
               spacing={14}
-              w={{ base: "100%", md: "40%", lg: "70%" }}
+              w={{ base: "100%", md: "60%", sm: "40%", lg: "70%" }}
               align={["center", "center", "flex-start", "flex-start"]}
             >
               <Heading
@@ -81,7 +81,7 @@ export default function Ebook({
               </Heading>
               
             </Stack>
-            <Box w={{ base: "80%", sm: "80%", md: "35%", lg: "30%" }}  >
+            <Box w={{ base: "60%", sm: "60%", md: "40%", lg: "30%" }}  >
               <Image src={image} size="full" />
             </Box>
           </Flex>
