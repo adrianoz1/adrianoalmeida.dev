@@ -47,7 +47,7 @@ export default function Author({
           lineHeight={1.5}
           textAlign={["center", "center", "left", "left"]}
         >
-          Olá! Caso você tenha caído aqui de paraquedas, deixa eu me apresentar primeiro. Meu nome é Adriano Almeida, sou Software Enginner e nas horas vagas gosto de criar conteúdo sobre tecnologia e programação. Tenho mais de dez anos de mercado e comecei como programador full- stack.
+          Olá! Caso você tenha caído aqui de paraquedas, deixa eu me apresentar primeiro. Meu nome é Adriano Almeida, sou <i>Software Enginner</i> e nas horas vagas gosto de criar conteúdo sobre tecnologia e programação. Tenho mais de dez anos de mercado e comecei como programador full- stack. Sou <i>Bacharel em Sistemas de Informação pela Universidade Federal de Santa Maria (UFSM)</i>.
         </Heading>
 
         <Heading

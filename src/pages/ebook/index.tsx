@@ -76,7 +76,7 @@ const Ebook: NextPage = () => {
             >
               Devs iniciantes
             </Heading>
-            O ebook é perfeito para quem está trabalhando com programação e quer saber como acelerar o seu processo de desenvolvimento profissional e, além disso, desfrutar dos altos salários que a área proporciona
+            O ebook é perfeito para quem está trabalhando com programação e quer saber como acelerar o seu processo de desenvolvimento profissional e, além disso, desfrutar dos altos salários que a área nos proporciona.
           </Box>
           <Box borderRadius="2xl" backgroundColor="gray.800" padding={4} textAlign="center" minHeight='80px'>
             <Heading
@@ -91,6 +91,21 @@ const Ebook: NextPage = () => {
               </Heading>
             Em pouco tempo você vai perceber que para atuar na área de tecnologia não basta ter conhecimentos técnicos, é necessário desenvolver outras habilidades que vão te destacar entre a concorrência. Neste ebook, de forma simples e direta, vou te ensinar todas elas. 
           </Box>
+
+          <Box borderRadius="2xl" backgroundColor="gray.800" padding={4} textAlign="center" minHeight='80px'>
+            <Heading
+                as="h3"
+                size="md"
+                marginBottom={7}
+                fontWeight="bold"
+                color="primary.800"
+               
+                textAlign={["center", "center"]}
+              >
+                 <Text as='mark'>Para Você</Text>
+              </Heading>
+              Se você chegou até aqui, você está pronto para conseguir a sua primeira oportunidade como dev e alcançar o salário que sempre sonhou. 
+          </Box>
         </SimpleGrid>
         <Center h={"40px"} paddingTop={"60px"}>
           <Link _hover={{
@@ -103,6 +118,38 @@ const Ebook: NextPage = () => {
             </WrapItem>
           </Link>
         </Center>
+    
+      </Stack>
+
+
+      <Stack padding="10">
+        <Heading
+          as="h3"
+          size="xl"
+          marginBottom={7}
+          fontWeight="bold"
+          color="primary.800"
+          textAlign={["center", "center"]}
+        >
+          🚀 Conteúdo Exclusivo!
+        </Heading>
+
+        <SimpleGrid columns={[1]} spacing='40px'>
+          <Box borderRadius="2xl" backgroundColor="black" padding={6}   textAlign="center"  minHeight='80px'>
+            <Heading
+              as="h3"
+              size="lg"
+              fontWeight="bold"
+              color="primary.800"
+              textAlign={["center", "center"]}
+            >
+            </Heading>
+              <Text fontSize="xl">
+              Ao adquirir esse ebook você vai aprender o caminho mais fácil para você se tornar dev. E mais, você vai começar a receber dicas e truques exclusivos sobre programação e tecnologia! Não perca essa oportunidade única!
+              </Text>
+          </Box>
+        </SimpleGrid>
+        
     
       </Stack>
 
