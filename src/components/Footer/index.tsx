@@ -19,6 +19,7 @@ export default function Footer() {
       direction={{ base: "column-reverse", md: "row" }}
       w="100%"
       px="6"
+      mb="15"
       minH="40vh"
       pt="6"
       maxWidth={1480}

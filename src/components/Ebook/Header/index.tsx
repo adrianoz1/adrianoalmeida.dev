@@ -105,8 +105,7 @@ export default function Ebook({
             <Box>
               <Icon
                 as={Arrow}
-                color={useColorModeValue('gray.800', 'gray.300')}
-                w={91}
+                w={81}
                 position={'absolute'}
                 right={-71}
                 top={'10px'}
@@ -115,8 +114,8 @@ export default function Ebook({
                 fontSize={'lg'}
                 fontFamily={'Caveat'}
                 position={'absolute'}
-                right={'-120px'}
-                top={'-15px'}
+                right={'-76px'}
+                top={'-55px'}
                 as='s'
                 transform={'rotate(10deg)'}>
                 R$ 39,00 
@@ -125,8 +124,8 @@ export default function Ebook({
                 fontSize={'2xl'}
                 fontFamily={'Caveat'}
                 position={'absolute'}
-                right={'-125px'}
-                top={'0'}
+                right={'-76px'}
+                top={'-37px'}
                 color={'green.300'}
                 transform={'rotate(10deg)'}>
                 R$ 23,90 
