@@ -27,10 +27,9 @@ export default function Footer() {
         spacing={4}
         w={{ base: "100%" }}
         borderRadius="2xl"
-        padding="4"
         align={["center", "center"]}
       >
-        <Stack padding="10">
+        <Stack>
           <Heading
             as="h3"
             size="2xl"
