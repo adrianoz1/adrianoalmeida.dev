@@ -115,7 +115,7 @@ export default function Ebook({
                 fontFamily={'Caveat'}
                 position={'absolute'}
                 right={'-76px'}
-                top={'-55px'}
+                top={'-44px'}
                 as='s'
                 transform={'rotate(10deg)'}>
                 R$ 39,00 
@@ -125,7 +125,7 @@ export default function Ebook({
                 fontFamily={'Caveat'}
                 position={'absolute'}
                 right={'-76px'}
-                top={'-37px'}
+                top={'-28px'}
                 color={'green.300'}
                 transform={'rotate(10deg)'}>
                 R$ 23,90 
