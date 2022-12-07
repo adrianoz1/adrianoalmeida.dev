@@ -94,11 +94,11 @@ export default function Ebook({
             position={'relative'}>
             <Link _hover={{
               textDecoration: 'none'
-            }} href='https://pay.kiwify.com.br/9ZrEXrg' isExternal>
+            }} href="#resgatar-ebook">
               <WrapItem>
                 <Button colorScheme='yellow' _hover={{
                   bg: "#8b782d"
-                }}>COMPRAR AGORA</Button>
+                }}>RESGATAR AGORA</Button>
               </WrapItem>
             </Link>
             
@@ -128,7 +128,7 @@ export default function Ebook({
                 top={'-28px'}
                 color={'green.300'}
                 transform={'rotate(10deg)'}>
-                R$ 23,90 
+                GRÁTIS!
               </Text>
             </Box>
           </Stack>

@@ -40,7 +40,7 @@ export function Header() {
             <SocialIcon icon={RiYoutubeFill} href="https://www.youtube.com/adrianoalmeidadev" />
             <SocialIcon icon={RiInstagramFill} href="https://www.instagram.com/adrianoalmeidadev/" />
             <SocialIcon icon={RiFacebookBoxFill} href="https://www.facebook.com/adrianoalmeidadev" />
-            <SocialIcon icon={RiGithubFill} href="https://www.github.com/adrianoluisalmeida" />
+            <SocialIcon icon={RiGithubFill} href="https://www.github.com/adrianoz1" />
         </HStack>
 
       </Flex>

@@ -14,10 +14,9 @@ const Home: NextPage = () => {
         subtitle="Codificando para impactar na vida das pessoas! 🚀"
         title="Adriano Almeida"
         key="1"
-        image="https://www.github.com/adrianoluisalmeida.png" />
+        image="https://www.github.com/adrianoz1.png" />
       
       <About />
-      <Newsletter />
       <Footer />
     </Container>
   )

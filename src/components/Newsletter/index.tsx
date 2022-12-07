@@ -30,7 +30,7 @@ export default function Newsletter() {
           color="primary.800"
           textAlign={["center", "center"]}
         >
-          Fique por dentro dos meus conteúdos semanais!
+          Tenha acesso ao Ebook Grátis! 
         </Heading>
         <NewsletterForm />
       </VStack>

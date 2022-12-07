@@ -65,7 +65,7 @@ export default function Author({
 
       </Stack>
       <Box w={{ base: "80%", sm: "80%", md: "35%", lg: "30%" }} borderRadius="50%" mb={{ base: 12, md: 0 }}>
-        <Avatar src="https://www.github.com/adrianoluisalmeida.png" size="full"  borderColor="gray.800" borderWidth="15px" />
+        <Avatar src="https://www.github.com/adrianoz1.png" size="full"  borderColor="gray.800" borderWidth="15px" />
       </Box>
     </Flex>
   )

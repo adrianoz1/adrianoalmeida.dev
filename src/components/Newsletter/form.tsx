@@ -32,7 +32,7 @@ export default function NewsletterForm() {
           body: JSONdata,
         }
         fetch(endpoint, options).then(response => {
-          let title = "E-mail cadastrado com successo!";
+          let title = "Ebook resgatado com sucesso! Verifique seu e-mail!";
           let status: RegisterStatus = "success";
 
           if (response.status !== 201) {
