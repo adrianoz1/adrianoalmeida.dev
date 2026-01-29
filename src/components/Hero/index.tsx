@@ -15,7 +15,7 @@ interface HeroProps {
 }
 
 export default function Hero({
-  title = 'Adriano Almeida',
+  title = 'Adriano Almeida - Dev',
   subtitle = 'Codificando para impactar na vida das pessoas! 🚀',
   image = 'https://www.github.com/adrianoz1.png',
   ...rest
