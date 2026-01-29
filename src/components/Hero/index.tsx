@@ -9,15 +9,15 @@ import {
 } from "@chakra-ui/react"
 
 interface HeroProps {
-  title: string,
-  subtitle: string,
-  image: string,
+  title?: string,
+  subtitle?: string,
+  image?: string,
 }
 
 export default function Hero({
-  title,
-  subtitle,
-  image,
+  title = 'Adriano Almeida',
+  subtitle = 'Codificando para impactar na vida das pessoas! 🚀',
+  image = 'https://www.github.com/adrianoz1.png',
   ...rest
 }: HeroProps) {
   return (
