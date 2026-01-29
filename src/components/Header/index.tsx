@@ -37,7 +37,7 @@ export function Header() {
           py="1"
           color="gray.300">
             <SocialIcon icon={RiYoutubeFill} href="https://www.youtube.com/@aa2dev" />
-            <SocialIcon icon={RiInstagramFill} href="https://www.instagram.com/a2.dev" />
+            <SocialIcon icon={RiInstagramFill} href="https://www.instagram.com/aa2dev" />
             <SocialIcon icon={RiGithubFill} href="https://www.github.com/adrianoz1" />
         </HStack>
 
