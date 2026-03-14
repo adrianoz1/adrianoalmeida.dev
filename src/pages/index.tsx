@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import NextLink from 'next/link'
 import {
   Avatar,
   Badge,
@@ -133,6 +134,11 @@ const Home: NextPage = () => {
           </VStack>
 
           <HStack spacing={{ base: 2, md: 3 }} flexWrap="wrap" justify="flex-end">
+            <NextLink href="/blog" passHref legacyBehavior>
+              <Button as="a" variant="ghost" color="gray.100" _hover={{ bg: 'whiteAlpha.100' }}>
+                Blog
+              </Button>
+            </NextLink>
             <Link href="https://www.youtube.com/@aa2dev" isExternal>
               <Button leftIcon={<Icon as={RiYoutubeFill} />} variant="ghost" color="gray.100" _hover={{ bg: 'whiteAlpha.100' }}>
                 YouTube
@@ -182,6 +188,19 @@ const Home: NextPage = () => {
               </Stack>
 
               <HStack spacing="4" wrap="wrap">
+                <NextLink href="/blog" passHref legacyBehavior>
+                  <Button
+                    as="a"
+                    size="lg"
+                    variant="outline"
+                    color="gray.100"
+                    borderColor="whiteAlpha.300"
+                    px="8"
+                    _hover={{ bg: 'whiteAlpha.100' }}
+                  >
+                    Ler o blog
+                  </Button>
+                </NextLink>
                 <Link href="https://www.youtube.com/@aa2dev" isExternal>
                   <Button
                     size="lg"
