@@ -82,7 +82,7 @@ const focusAreas = [
 ]
 
 const stats = [
-  '8+ anos criando produtos digitais',
+  '12+ anos atuando como programador',
   'Conteúdo sobre programação e tecnologia',
   'Presença ativa em YouTube, Instagram e TikTok',
 ]
@@ -128,7 +128,7 @@ const Home: NextPage = () => {
               aa<Text as="span" color="brand.400">.</Text>dev
             </Text>
             <Text color="gray.400" fontSize="sm">
-              programação, produto e conteúdo com visão prática
+              programador e produtor de conteúdo com visão prática
             </Text>
           </VStack>
 
@@ -156,7 +156,7 @@ const Home: NextPage = () => {
             <Stack spacing="7">
               <HStack spacing="3" wrap="wrap">
                 <Badge bg="whiteAlpha.180" color="brand.100" px="3" py="1.5" borderRadius="full">
-                  Criador de conteúdo tech
+                  Programador e criador de conteúdo tech
                 </Badge>
                 <Badge bg="teal.700" color="teal.50" px="3" py="1.5" borderRadius="full">
                   @aa2dev
@@ -175,8 +175,9 @@ const Home: NextPage = () => {
                 </Heading>
 
                 <Text fontSize={{ base: 'lg', md: 'xl' }} color="gray.300" maxW="2xl" lineHeight="1.8">
-                  Sou Adriano Almeida. Construo produtos digitais e transformo essa experiência em conteúdo para ajudar
-                  devs a pensar melhor, codar com mais clareza e acompanhar a evolução da tecnologia sem hype vazio.
+                  Sou Adriano Almeida, programador com mais de 12 anos de experiência e produtor de conteúdo sobre
+                  programação e tecnologia. Transformo vivência prática em conteúdo para ajudar devs a pensar melhor,
+                  codar com mais clareza e acompanhar a evolução da área sem hype vazio.
                 </Text>
               </Stack>
 
@@ -193,7 +194,7 @@ const Home: NextPage = () => {
                     Ver conteúdos
                   </Button>
                 </Link>
-                <Link href="mailto:adrianoo.luis.almeida@gmail.com">
+                <Link href="mailto:contato@a2dev.com.br">
                   <Button
                     size="lg"
                     variant="outline"
@@ -253,7 +254,7 @@ const Home: NextPage = () => {
                 <HStack justify="space-between" align="flex-start">
                   <VStack align="flex-start" spacing="1">
                     <Text color="gray.400" fontSize="sm" textTransform="uppercase" letterSpacing="0.16em">
-                      Criador
+                      Perfil
                     </Text>
                     <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }}>
                       Adriano Almeida
@@ -270,8 +271,9 @@ const Home: NextPage = () => {
                 </HStack>
 
                 <Text color="gray.300" lineHeight="1.9">
-                  Produzo conteúdo para quem quer evoluir como dev e entender tecnologia de um jeito aplicável:
-                  programação, ferramentas, arquitetura, carreira e visão de produto.
+                  Atuo como programador e produtor de conteúdo, criando materiais para quem quer evoluir como dev e
+                  entender tecnologia de um jeito aplicável: programação, ferramentas, arquitetura, carreira e visão
+                  de produto.
                 </Text>
 
                 <SimpleGrid columns={2} spacing="4">
@@ -430,17 +432,17 @@ const Home: NextPage = () => {
             <Heading fontSize={{ base: '3xl', md: '5xl' }} maxW="12ch">
               Tecnologia, conteúdo e conversa boa no mesmo lugar.
             </Heading>
-            <Text color="gray.200" maxW="2xl" lineHeight="1.9">
-              Se você quer acompanhar meu trabalho, trocar ideia sobre projetos ou falar sobre conteúdo em tecnologia,
-              me chama por e-mail, WhatsApp ou nas redes do @aa2dev.
-            </Text>
-            <HStack spacing="4" wrap="wrap">
-              <Link href="mailto:adrianoo.luis.almeida@gmail.com">
+              <Text color="gray.200" maxW="2xl" lineHeight="1.9">
+                Se você quer acompanhar meu trabalho, trocar ideia sobre projetos ou falar sobre conteúdo em tecnologia,
+                me chama por e-mail, WhatsApp ou nas redes do @aa2dev.
+              </Text>
+              <HStack spacing="4" wrap="wrap">
+              <Link href="mailto:contato@a2dev.com.br">
                 <Button leftIcon={<Icon as={RiMailFill} />} size="lg" bg="gray.50" color="gray.900" _hover={{ bg: 'white' }}>
                   Enviar e-mail
                 </Button>
               </Link>
-              <Link href="https://wa.me/5555991312271" isExternal>
+              <Link href="https://wa.me/5551989100986" isExternal>
                 <Button
                   leftIcon={<Icon as={RiWhatsappFill} />}
                   size="lg"
