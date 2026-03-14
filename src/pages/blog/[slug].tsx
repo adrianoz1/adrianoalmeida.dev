@@ -2,17 +2,19 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import {
-  Badge,
   Box,
   Button,
   Container,
+  Flex,
   Heading,
   HStack,
   Icon,
   Stack,
   Text,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { RiArrowLeftLine } from 'react-icons/ri'
+import { PostToc } from '../../components/blog/PostToc'
 import { BlogPost, formatPostDate } from '../../lib/blog'
 
 interface BlogPostPageProps {
@@ -21,57 +23,66 @@ interface BlogPostPageProps {
 
 const articleStyles = {
   h2: {
-    marginTop: '2.5rem',
+    marginTop: '2.75rem',
     marginBottom: '1rem',
-    fontSize: '1.875rem',
+    fontSize: '2rem',
     fontWeight: 700,
+    letterSpacing: '-0.03em',
     lineHeight: 1.1,
+    borderBottom: '1px solid',
+    borderColor: 'borderSubtle',
+    paddingBottom: '0.7rem',
   },
   h3: {
-    marginTop: '2rem',
+    marginTop: '2.25rem',
     marginBottom: '0.75rem',
     fontSize: '1.5rem',
     fontWeight: 700,
   },
   p: {
-    color: 'gray.300',
+    color: 'textMuted',
     lineHeight: 1.9,
-    marginBottom: '1.25rem',
+    marginBottom: '1.35rem',
+    fontSize: '1.12rem',
   },
   ul: {
     paddingLeft: '1.5rem',
-    marginBottom: '1.25rem',
+    marginBottom: '1.4rem',
   },
   ol: {
     paddingLeft: '1.5rem',
-    marginBottom: '1.25rem',
+    marginBottom: '1.4rem',
   },
   li: {
-    color: 'gray.300',
-    marginBottom: '0.5rem',
+    color: 'textMuted',
+    marginBottom: '0.6rem',
+    lineHeight: 1.8,
+    fontSize: '1.05rem',
   },
   strong: {
-    color: 'white',
+    color: 'textPrimary',
   },
   a: {
-    color: 'brand.300',
+    color: 'linkAccent',
     textDecoration: 'underline',
+    textUnderlineOffset: '0.15em',
   },
   blockquote: {
-    paddingLeft: '1rem',
-    borderLeft: '3px solid rgba(255,255,255,0.18)',
-    color: 'gray.200',
-    marginY: '1.5rem',
+    paddingLeft: '1.25rem',
+    borderLeft: '3px solid',
+    borderColor: 'borderSubtle',
+    color: 'textPrimary',
+    marginY: '1.6rem',
   },
   code: {
-    background: 'rgba(255,255,255,0.08)',
+    background: 'surfaceAltBg',
     borderRadius: '0.4rem',
-    paddingX: '0.35rem',
-    paddingY: '0.15rem',
+    paddingInline: '0.35rem',
+    paddingBlock: '0.15rem',
     fontSize: '0.95em',
   },
   pre: {
-    background: 'rgba(0,0,0,0.28)',
+    background: 'surfaceAltBg',
     borderRadius: '1rem',
     padding: '1rem',
     overflowX: 'auto',
@@ -80,6 +91,10 @@ const articleStyles = {
 }
 
 const BlogPostPage: NextPage<BlogPostPageProps> = ({ post }) => {
+  const primaryText = useColorModeValue('textPrimary', 'textPrimary')
+  const mutedText = useColorModeValue('textMuted', 'textMuted')
+  const ghostHover = useColorModeValue('gray.100', 'gray.700')
+
   return (
     <>
       <Head>
@@ -87,69 +102,47 @@ const BlogPostPage: NextPage<BlogPostPageProps> = ({ post }) => {
         <meta name="description" content={post.excerpt} />
       </Head>
 
-      <Container maxW="860px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
-        <Stack spacing="8">
-          <Link href="/blog" passHref legacyBehavior>
-            <Button
-              as="a"
-              alignSelf="flex-start"
-              variant="ghost"
-              leftIcon={<Icon as={RiArrowLeftLine} />}
-              color="gray.200"
-              _hover={{ bg: 'whiteAlpha.100' }}
-            >
-              Voltar para o blog
-            </Button>
-          </Link>
+      <Container maxW="1380px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
+        <Flex align="flex-start" gap={{ base: 12, xl: 16 }} direction={{ base: 'column', xl: 'row' }}>
+          <Box flex="1" minW={0} maxW="900px">
+            <Stack spacing="8">
+              <Link href="/blog" passHref legacyBehavior>
+                <Button
+                  as="a"
+                  variant="ghost"
+                  leftIcon={<Icon as={RiArrowLeftLine} />}
+                  color={primaryText}
+                  _hover={{ bg: ghostHover }}
+                >
+                  Voltar para o blog
+                </Button>
+              </Link>
 
-          <Box
-            borderRadius="32px"
-            p={{ base: 7, md: 10 }}
-            bg="linear-gradient(135deg, rgba(255,184,0,0.18) 0%, rgba(9,30,35,0.92) 56%, rgba(255,255,255,0.04) 100%)"
-            border="1px solid"
-            borderColor="whiteAlpha.200"
-          >
-            <Stack spacing="5">
-              <Badge alignSelf="flex-start" bg="whiteAlpha.180" color="brand.100" px="3" py="1.5" borderRadius="full">
-                {post.coverTitle || 'Artigo'}
-              </Badge>
+              <Stack spacing="4" align="center" textAlign="center" pb="6">
+                <Heading
+                  as="h1"
+                  fontSize={{ base: '4xl', md: '6xl' }}
+                  lineHeight={{ base: 1.05, md: 0.98 }}
+                  letterSpacing="-0.05em"
+                  maxW="12ch"
+                >
+                  {post.title}
+                </Heading>
 
-              <Heading as="h1" fontSize={{ base: '4xl', md: '6xl' }} lineHeight={{ base: 1.05, md: 0.95 }}>
-                {post.title}
-              </Heading>
-
-              <Text color="gray.200" fontSize={{ base: 'lg', md: 'xl' }} lineHeight="1.8">
-                {post.excerpt}
-              </Text>
-
-              <HStack spacing="3" color="gray.300" fontSize="sm" wrap="wrap">
-                <Text>{formatPostDate(post.date)}</Text>
-                <Text>{post.author}</Text>
-              </HStack>
-
-              {post.tags && post.tags.length > 0 ? (
-                <HStack spacing="2" wrap="wrap">
-                  {post.tags.map((tag) => (
-                    <Badge key={tag} bg="whiteAlpha.160" color="gray.100" px="2.5" py="1" borderRadius="full">
-                      {tag}
-                    </Badge>
-                  ))}
+                <HStack spacing="3" color={mutedText} fontSize={{ base: 'sm', md: 'md' }} wrap="wrap" justify="center">
+                  <Text>{formatPostDate(post.date)}</Text>
+                  <Text>{post.author}</Text>
                 </HStack>
-              ) : null}
+              </Stack>
+
+              <Box as="article" sx={articleStyles} maxW="820px" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
             </Stack>
           </Box>
 
-          <Box
-            as="article"
-            sx={articleStyles}
-            borderRadius="28px"
-            bg="rgba(255,255,255,0.04)"
-            border="1px solid"
-            borderColor="whiteAlpha.160"
-            p={{ base: 6, md: 8 }}
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
-        </Stack>
+          <Box width={{ base: '100%', xl: '240px' }} display={{ base: 'none', lg: 'block' }} flexShrink={0}>
+            <PostToc headings={post.headings} />
+          </Box>
+        </Flex>
       </Container>
     </>
   )

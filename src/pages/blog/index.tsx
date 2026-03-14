@@ -1,144 +1,163 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
 import {
-  Badge,
   Box,
   Button,
   Container,
-  Flex,
   Heading,
   HStack,
   Icon,
-  SimpleGrid,
   Stack,
   Text,
+  useColorModeValue,
+  VStack,
 } from '@chakra-ui/react'
-import { RiArrowLeftLine, RiArrowRightUpLine, RiArticleLine, RiDraftLine } from 'react-icons/ri'
-import { BlogPostSummary, formatPostDate } from '../../lib/blog'
+import { RiArrowLeftLine } from 'react-icons/ri'
+import { BlogPostSummary, formatPostMonth, getPostMonthKey } from '../../lib/blog'
 
 interface BlogIndexPageProps {
   posts: BlogPostSummary[]
 }
 
+interface PostGroup {
+  key: string
+  label: string
+  posts: BlogPostSummary[]
+}
+
+function groupPostsByMonth(posts: BlogPostSummary[]): PostGroup[] {
+  const groups = new Map<string, PostGroup>()
+
+  for (const post of posts) {
+    const key = getPostMonthKey(post.date)
+    const currentGroup = groups.get(key)
+
+    if (currentGroup) {
+      currentGroup.posts.push(post)
+      continue
+    }
+
+    groups.set(key, {
+      key,
+      label: formatPostMonth(post.date),
+      posts: [post],
+    })
+  }
+
+  return Array.from(groups.values())
+}
+
 const BlogIndexPage: NextPage<BlogIndexPageProps> = ({ posts }) => {
+  const groupedPosts = groupPostsByMonth(posts)
+  const borderColor = useColorModeValue('borderSubtle', 'borderSubtle')
+  const primaryText = useColorModeValue('textPrimary', 'textPrimary')
+  const mutedText = useColorModeValue('tocMuted', 'tocMuted')
+  const ghostHover = useColorModeValue('gray.100', 'gray.700')
+  const linkColor = useColorModeValue('brand.500', 'linkAccent')
+
   return (
-    <Container maxW="1100px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
-      <Stack spacing="10">
-        <Stack spacing="5">
+    <Container maxW="1380px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
+      <Stack spacing={{ base: 10, md: 14 }}>
+        <Stack spacing="5" align="center" textAlign="center">
           <Link href="/" passHref legacyBehavior>
             <Button
               as="a"
-              alignSelf="flex-start"
               variant="ghost"
               leftIcon={<Icon as={RiArrowLeftLine} />}
-              color="gray.200"
-              _hover={{ bg: 'whiteAlpha.100' }}
+              color={primaryText}
+              _hover={{ bg: ghostHover }}
             >
               Voltar para a home
             </Button>
           </Link>
 
-          <Badge alignSelf="flex-start" bg="whiteAlpha.180" color="brand.100" px="3" py="1.5" borderRadius="full">
-            Blog em Markdown
-          </Badge>
-
-          <Heading as="h1" fontSize={{ base: '4xl', md: '6xl' }} lineHeight={{ base: 1.05, md: 0.95 }} maxW="10ch">
-            Artigos publicados direto do repositório.
+          <Heading
+            as="h1"
+            fontSize={{ base: '4xl', md: '6xl' }}
+            fontWeight="700"
+            letterSpacing="-0.05em"
+            lineHeight={{ base: 1.05, md: 0.96 }}
+          >
+            Blog aa<Text as="span" color="brand.400">.</Text>dev
           </Heading>
 
-          <Text color="gray.300" fontSize={{ base: 'lg', md: 'xl' }} maxW="3xl" lineHeight="1.8">
-            Esta área do site renderiza posts em Markdown versionados no GitHub. A próxima etapa do projeto vai
-            adicionar rascunhos automáticos revisados por Pull Request antes da publicação.
+          <Text color={mutedText} maxW="2xl" fontSize={{ base: 'lg', md: 'xl' }} lineHeight="1.8">
+            Posts em Markdown publicados direto do repositorio.
           </Text>
         </Stack>
 
-        <Box
-          borderRadius="28px"
-          border="1px solid"
-          borderColor="whiteAlpha.200"
-          bg="rgba(255,255,255,0.05)"
-          p={{ base: 6, md: 8 }}
-        >
-          <HStack spacing="4" align="flex-start">
-            <Flex
-              width="12"
-              height="12"
-              borderRadius="2xl"
-              align="center"
-              justify="center"
-              bg="brand.400"
-              color="gray.900"
-              flexShrink={0}
-            >
-              <Icon as={RiDraftLine} boxSize="6" />
-            </Flex>
-            <Stack spacing="2">
-              <Heading as="h2" fontSize="2xl">
-                Fluxo editorial preparado para rascunhos
-              </Heading>
-              <Text color="gray.300" lineHeight="1.8">
-                Os rascunhos automáticos vão viver em `content/blog/drafts`, enquanto os posts aprovados ficam em
-                `content/blog/published`. Esta PR prepara a camada pública e o modelo de conteúdo para esse fluxo.
-              </Text>
-            </Stack>
-          </HStack>
-        </Box>
-
-        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing="6">
-          {posts.map((post) => (
-            <Box
-              key={post.slug}
-              p={{ base: 6, md: 7 }}
-              borderRadius="28px"
-              bg="rgba(255,255,255,0.06)"
-              border="1px solid"
-              borderColor="whiteAlpha.200"
-            >
-              <Stack spacing="5">
-                <HStack spacing="3" color="gray.400" fontSize="sm" wrap="wrap">
-                  <HStack spacing="2">
-                    <Icon as={RiArticleLine} />
-                    <Text>{formatPostDate(post.date)}</Text>
-                  </HStack>
-                  <Text>{post.author}</Text>
-                </HStack>
-
-                <Stack spacing="3">
-                  <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }}>
-                    {post.title}
-                  </Heading>
-                  <Text color="gray.300" lineHeight="1.8">
-                    {post.excerpt}
-                  </Text>
-                </Stack>
-
-                {post.tags && post.tags.length > 0 ? (
-                  <HStack spacing="2" wrap="wrap">
-                    {post.tags.map((tag) => (
-                      <Badge key={tag} bg="whiteAlpha.160" color="gray.100" px="2.5" py="1" borderRadius="full">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </HStack>
-                ) : null}
-
-                <Link href={`/blog/${post.slug}`} passHref legacyBehavior>
-                  <Button
-                    as="a"
-                    alignSelf="flex-start"
-                    variant="outline"
-                    borderColor="whiteAlpha.300"
-                    color="gray.100"
-                    rightIcon={<Icon as={RiArrowRightUpLine} />}
-                    _hover={{ bg: 'whiteAlpha.100' }}
+        <Box display={{ base: 'block', xl: 'flex' }} alignItems="flex-start">
+          <Box flex="1" minW={0} pr={{ xl: 16 }}>
+            <Stack spacing={{ base: 12, md: 16 }}>
+              {groupedPosts.map((group) => (
+                <Box key={group.key} id={group.key} scrollMarginTop="6rem">
+                  <Heading
+                    as="h2"
+                    fontSize={{ base: '3xl', md: '5xl' }}
+                    fontWeight="700"
+                    letterSpacing="-0.04em"
+                    mb="4"
                   >
-                    Ler artigo
-                  </Button>
-                </Link>
+                    {group.label}
+                  </Heading>
+
+                  <Box borderTop="1px solid" borderColor={borderColor} pt="6">
+                    <Stack as="ul" spacing="5" pl={{ base: 5, md: 7 }} sx={{ listStyleType: 'disc' }}>
+                      {group.posts.map((post) => (
+                        <Box as="li" key={post.slug} color={mutedText}>
+                          <Link href={`/blog/${post.slug}`} passHref legacyBehavior>
+                            <Text
+                              as="a"
+                              fontSize={{ base: '2xl', md: '3xl' }}
+                              color={linkColor}
+                              lineHeight="1.5"
+                              textDecoration="underline"
+                              _hover={{ color: 'brand.300' }}
+                            >
+                              {post.title}
+                            </Text>
+                          </Link>
+                        </Box>
+                      ))}
+                    </Stack>
+                  </Box>
+                </Box>
+              ))}
+            </Stack>
+          </Box>
+
+          <Box
+            width={{ base: '100%', xl: '240px' }}
+            position={{ base: 'static', xl: 'sticky' }}
+            top="2rem"
+            flexShrink={0}
+            mt={{ base: 10, xl: 0 }}
+          >
+            <VStack
+              align="stretch"
+              spacing="4"
+              borderLeft={{ base: 'none', xl: '1px solid' }}
+              borderTop={{ base: '1px solid', xl: 'none' }}
+              borderColor={borderColor}
+              pt={{ base: 6, xl: 0 }}
+              pl={{ base: 0, xl: 6 }}
+            >
+              <Text fontSize="md" fontWeight="700" color={primaryText}>
+                Nesta pagina
+              </Text>
+
+              <Stack spacing="2">
+                {groupedPosts.map((group) => (
+                  <Link key={group.key} href={`/blog#${group.key}`} passHref legacyBehavior>
+                    <Text as="a" color={mutedText} fontSize="sm" _hover={{ color: primaryText }}>
+                      {group.label}
+                    </Text>
+                  </Link>
+                ))}
               </Stack>
-            </Box>
-          ))}
-        </SimpleGrid>
+            </VStack>
+          </Box>
+        </Box>
       </Stack>
     </Container>
   )

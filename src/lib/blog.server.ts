@@ -4,9 +4,63 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 import gfm from 'remark-gfm'
-import type { BlogPost, BlogPostFrontmatter, BlogPostSummary } from './blog'
+import type { BlogPost, BlogPostFrontmatter, BlogPostHeading, BlogPostSummary } from './blog'
 
 const publishedPostsDirectory = path.join(process.cwd(), 'content/blog/published')
+
+function slugifyHeading(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+}
+
+function extractHeadings(content: string): BlogPostHeading[] {
+  const seenIds = new Map<string, number>()
+  const headings: BlogPostHeading[] = []
+  const lines = content.split('\n')
+
+  for (const line of lines) {
+    const match = /^(#{2,3})\s+(.+)$/.exec(line.trim())
+
+    if (!match) {
+      continue
+    }
+
+    const level = match[1].length as 2 | 3
+    const rawText = match[2].trim().replace(/\[(.*?)\]\(.*?\)/g, '$1').replace(/[*_`~]/g, '')
+    const baseId = slugifyHeading(rawText)
+    const occurrences = seenIds.get(baseId) ?? 0
+    const id = occurrences === 0 ? baseId : `${baseId}-${occurrences + 1}`
+
+    seenIds.set(baseId, occurrences + 1)
+    headings.push({
+      id,
+      text: rawText,
+      level,
+    })
+  }
+
+  return headings
+}
+
+function injectHeadingIds(contentHtml: string, headings: BlogPostHeading[]): string {
+  let headingIndex = 0
+
+  return contentHtml.replace(/<h([23])>(.*?)<\/h\1>/g, (match, level) => {
+    const heading = headings[headingIndex]
+
+    if (!heading || Number(level) !== heading.level) {
+      return match
+    }
+
+    headingIndex += 1
+    return `<h${level} id="${heading.id}">${match.replace(/^<h[23]>|<\/h[23]>$/g, '')}</h${level}>`
+  })
+}
 
 function assertFrontmatter(data: Record<string, unknown>, slug: string): BlogPostFrontmatter {
   const title = typeof data.title === 'string' ? data.title : slug
@@ -67,10 +121,13 @@ export async function getPublishedPostBySlug(slug: string): Promise<BlogPost> {
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
   const processedContent = await remark().use(gfm).use(html).process(content)
+  const headings = extractHeadings(content)
+  const contentHtml = injectHeadingIds(processedContent.toString(), headings)
 
   return {
     slug,
-    contentHtml: processedContent.toString(),
+    contentHtml,
+    headings,
     ...assertFrontmatter(data, slug),
   }
 }
