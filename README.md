@@ -1,34 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Blog em Markdown
 
-## Getting Started
+Este projeto usa Next.js com posts em Markdown armazenados no proprio repositorio:
 
-First, run the development server:
+- `content/blog/published/*.md`: posts publicos
+- `content/blog/drafts/*.md`: rascunhos gerados pelo pipeline editorial
+- `/blog`: listagem publica
+- `/blog/[slug]`: pagina estatica de cada post
+
+## Desenvolvimento
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra `http://localhost:3000`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Pipeline editorial diario
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Foi adicionada a etapa 2 do projeto com um worker serverless em `/api/cron/news-digest`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Fluxo atual:
 
-## Learn More
+1. consulta feeds RSS oficiais de TechCrunch, Ars Technica e WIRED
+2. aplica scoring editorial e deduplicacao
+3. seleciona os 5-7 itens mais fortes
+4. gera um unico rascunho diario em Markdown
+5. abre uma PR automatica com o arquivo em `content/blog/drafts`
 
-To learn more about Next.js, take a look at the following resources:
+O objetivo do arquivo gerado e servir como compilado diario para revisao antes de publicar no blog ou transformar em newsletter.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Variaveis de ambiente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Use `.env.example` como base.
 
-## Deploy on Vercel
+Obrigatorias para o cron completo:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `CRON_SECRET`
+- `GITHUB_TOKEN`
+- `GITHUB_REPO_OWNER`
+- `GITHUB_REPO_NAME`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O OpenAI e opcional:
+
+- com `OPENAI_API_KEY`, o corpo do digest e escrito pela IA
+- sem `OPENAI_API_KEY`, o sistema gera um fallback deterministico em Markdown
+
+Feeds RSS podem ser sobrescritos por env se voce quiser trocar a curadoria:
+
+- `RSS_TECHCRUNCH_FEED`
+- `RSS_ARS_TECHNICA_FEED`
+- `RSS_WIRED_FEED`
+
+## Teste local
+
+Dry-run sem abrir PR:
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" "http://localhost:3000/api/cron/news-digest?dryRun=1"
+```
+
+Execucao completa com abertura de PR:
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" "http://localhost:3000/api/cron/news-digest"
+```
+
+## Vercel Cron
+
+O arquivo `vercel.json` agenda o worker diariamente:
+
+```json
+{
+  "crons": [
+    {
+      "path": "/api/cron/news-digest",
+      "schedule": "0 11 * * *"
+    }
+  ]
+}
+```
+
+`11:00 UTC` equivale a `08:00` em `America/Sao_Paulo`.
+
+## Arquitetura adicionada
+
+- `src/lib/news-digest/sources/rss.ts`: coletor RSS das fontes editoriais
+- `src/lib/news-digest/editorial.ts`: scoring, filtragem e deduplicacao
+- `src/lib/news-digest/markdown.ts`: gera o rascunho em Markdown
+- `src/lib/news-digest/github.ts`: cria branch, commit e pull request via API do GitHub
+- `src/pages/api/cron/news-digest.ts`: endpoint do cron
+
+## Proximos refinamentos
+
+- adicionar fontes extras via RSS e portais tech
+- reforcar filtros para rumor, duplicata fraca e marketing vazio
+- criar um fluxo de promocao de `drafts` para `published`
