@@ -46,13 +46,3 @@ O ChatGPT agora suporta integrações com diversos serviços, incluindo DoorDash
 ## Fechamento
 
 Os movimentos estratégicos das grandes empresas indicam um mercado em transformação, com foco em inteligência artificial e experiência do usuário. Enquanto isso, as inovações tecnológicas continuam a aproximar pessoas e facilitar o dia a dia. Seguimos atentos às próximas evoluções.
-
-## Auditoria do pipeline
-
-1. [Meta reportedly considering layoffs that could affect 20% of the company](https://techcrunch.com/2026/03/14/meta-reportedly-considering-layoffs-that-could-affect-20-of-the-company/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-2. [As people look for ways to make new friends, here are the apps promising to help](https://techcrunch.com/2026/03/14/as-people-look-for-ways-to-make-new-friends-here-are-the-apps-promising-to-help/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-3. [Staff complain that xAI is flailing because of constant upheaval](https://arstechnica.com/ai/2026/03/staff-complain-that-xai-is-flailing-because-of-constant-upheaval/) | score 6 | motivos: muito_recente, tema_tech_denso, fonte_editorial_profunda
-4. [Microsoft is working to eliminate PC gaming&#039;s "compiling shaders" wait times](https://arstechnica.com/gaming/2026/03/microsoft-is-working-to-eliminate-pc-gamings-compiling-shaders-wait-times/) | score 6 | motivos: recente, tema_tech_denso, fonte_editorial_profunda, contexto_suficiente
-5. [Honda is killing its EVs — and any chance of competing in the future](https://techcrunch.com/2026/03/14/honda-is-killing-its-evs-and-any-chance-of-competing-in-the-future/) | score 5 | motivos: muito_recente, tema_tech_denso
-6. [How to use the new ChatGPT app integrations, including DoorDash, Spotify, Uber, and others](https://techcrunch.com/2026/03/14/how-to-use-the-new-chatgpt-app-integrations-including-doordash-spotify-uber-and-others/) | score 5 | motivos: muito_recente, tema_tech_denso
-7. [NASA officials sidestepped questions on Artemis II risks—there&#039;s a reason why](https://arstechnica.com/space/2026/03/flying-to-the-moon-for-the-first-time-in-54-years-is-risky-but-how-risky/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
