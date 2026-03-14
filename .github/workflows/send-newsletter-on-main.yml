@@ -33,7 +33,10 @@ jobs:
             exit 0
           fi
 
-          ADDED_DIGEST_FILE="$(git diff --name-status "$BASE_SHA" "$HEAD_SHA" | awk '$1 == "A" {print $2}' | grep -E '^content/blog/published/[0-9]{4}-[0-9]{2}-[0-9]{2}-tech-digest\.md$' | head -n 1)"
+          ADDED_DIGEST_FILE="$(git diff --name-status "$BASE_SHA" "$HEAD_SHA" \
+            | awk '$1 == "A" {print $2}' \
+            | grep -m 1 -E '^content/blog/published/[0-9]{4}-[0-9]{2}-[0-9]{2}-tech-digest\.md$' \
+            || true)"
 
           if [ -z "$ADDED_DIGEST_FILE" ]; then
             echo "should_send=false" >> "$GITHUB_OUTPUT"
