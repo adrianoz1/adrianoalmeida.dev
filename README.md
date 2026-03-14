@@ -91,8 +91,64 @@ O arquivo `vercel.json` agenda o worker diariamente:
 - `src/lib/news-digest/github.ts`: cria branch, commit e pull request via API do GitHub
 - `src/pages/api/cron/news-digest.ts`: endpoint do cron
 
+## Newsletter
+
+Foi adicionada uma base de newsletter com:
+
+- formulario de captura em `src/components/NewsletterSignup.tsx`
+- `POST /api/newsletter/subscribe` para salvar emails no DynamoDB
+- `GET /api/newsletter/unsubscribe` para cancelamento simples
+- `POST /api/newsletter/send-latest` para enviar o post publicado mais recente via Resend
+- workflow em `.github/workflows/send-newsletter-on-main.yml` para disparar o envio quando `content/blog/published/**` mudar na `main`
+
+### Envs da newsletter
+
+- `AWS_REGION`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `NEWSLETTER_TABLE_NAME`
+- `RESEND_API_KEY`
+- `NEWSLETTER_FROM_EMAIL`
+- `NEWSLETTER_REPLY_TO` opcional
+- `NEWSLETTER_DISPATCH_SECRET`
+- `SITE_URL`
+
+### Segredos no GitHub Actions
+
+Crie estes secrets no repositorio:
+
+- `NEWSLETTER_TRIGGER_URL`
+  Exemplo: `https://a2dev.com.br/api/newsletter/send-latest`
+- `NEWSLETTER_DISPATCH_SECRET`
+  Mesmo valor configurado na Vercel
+
+### Testes manuais
+
+Cadastrar email:
+
+```bash
+curl -X POST "https://a2dev.com.br/api/newsletter/subscribe" \
+  -H "Content-Type: application/json" \
+  -d '{"email":"voce@exemplo.com"}'
+```
+
+Dry-run do disparo:
+
+```bash
+curl -X POST "https://a2dev.com.br/api/newsletter/send-latest?dryRun=1" \
+  -H "Authorization: Bearer $NEWSLETTER_DISPATCH_SECRET"
+```
+
+Disparo real:
+
+```bash
+curl -X POST "https://a2dev.com.br/api/newsletter/send-latest" \
+  -H "Authorization: Bearer $NEWSLETTER_DISPATCH_SECRET"
+```
+
 ## Proximos refinamentos
 
 - adicionar fontes extras via RSS e portais tech
 - reforcar filtros para rumor, duplicata fraca e marketing vazio
 - criar um fluxo de promocao de `drafts` para `published`
+- substituir o `scan` do DynamoDB por indice dedicado quando a base crescer

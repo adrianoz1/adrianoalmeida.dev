@@ -30,6 +30,7 @@ import {
   RiWhatsappFill,
   RiYoutubeFill,
 } from 'react-icons/ri'
+import { NewsletterSignup } from '../components/NewsletterSignup'
 
 const channelHighlights = [
   {
@@ -297,6 +298,8 @@ const Home: NextPage = () => {
             </Box>
           </GridItem>
         </Grid>
+
+        <NewsletterSignup />
 
         <Box mt={{ base: 20, md: 28 }}>
           <Stack spacing="4" mb="8">
