@@ -17,9 +17,6 @@ export interface NewsDigestConfig {
   cronSecret?: string
   timezone: string
   authorName: string
-  xBearerToken?: string
-  xQuery: string
-  xMaxResults: number
   openAiApiKey?: string
   openAiModel: string
   githubToken?: string
@@ -30,6 +27,9 @@ export interface NewsDigestConfig {
   maxSelectedItems: number
   minScore: number
   repoUrl?: string
+  rssTechCrunchFeed: string
+  rssArsTechnicaFeed: string
+  rssWiredFeed: string
 }
 
 export function getNewsDigestConfig(): NewsDigestConfig {
@@ -37,12 +37,6 @@ export function getNewsDigestConfig(): NewsDigestConfig {
     cronSecret: process.env.CRON_SECRET,
     timezone: readOptionalStringEnv('NEWS_DIGEST_TIMEZONE', 'America/Sao_Paulo'),
     authorName: readOptionalStringEnv('NEWS_DIGEST_AUTHOR', 'Adriano Almeida'),
-    xBearerToken: process.env.X_BEARER_TOKEN,
-    xQuery: readOptionalStringEnv(
-      'X_SEARCH_QUERY',
-      '(AI OR OpenAI OR Anthropic OR Google OR Apple OR Meta OR Microsoft OR Vercel OR React OR Next.js OR TypeScript OR startup) lang:en -is:retweet -is:reply'
-    ),
-    xMaxResults: readOptionalNumberEnv('X_MAX_RESULTS', 30),
     openAiApiKey: process.env.OPENAI_API_KEY,
     openAiModel: readOptionalStringEnv('OPENAI_MODEL', 'gpt-4.1-mini'),
     githubToken: process.env.GITHUB_TOKEN,
@@ -53,6 +47,9 @@ export function getNewsDigestConfig(): NewsDigestConfig {
     maxSelectedItems: readOptionalNumberEnv('NEWS_DIGEST_MAX_ITEMS', 7),
     minScore: readOptionalNumberEnv('NEWS_DIGEST_MIN_SCORE', 2),
     repoUrl: process.env.GITHUB_REPOSITORY_URL,
+    rssTechCrunchFeed: readOptionalStringEnv('RSS_TECHCRUNCH_FEED', 'https://techcrunch.com/feed/'),
+    rssArsTechnicaFeed: readOptionalStringEnv('RSS_ARS_TECHNICA_FEED', 'https://feeds.arstechnica.com/arstechnica/everything/'),
+    rssWiredFeed: readOptionalStringEnv('RSS_WIRED_FEED', 'https://www.wired.com/feed/tag/ai/latest/rss'),
   }
 }
 
@@ -71,14 +68,6 @@ export function assertOpenAiConfig(config: NewsDigestConfig): asserts config is 
 } {
   if (!config.openAiApiKey) {
     throw new Error('OpenAI integration requires OPENAI_API_KEY')
-  }
-}
-
-export function assertXConfig(config: NewsDigestConfig): asserts config is NewsDigestConfig & {
-  xBearerToken: string
-} {
-  if (!config.xBearerToken) {
-    throw new Error('X integration requires X_BEARER_TOKEN')
   }
 }
 

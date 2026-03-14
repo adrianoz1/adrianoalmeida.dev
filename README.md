@@ -22,7 +22,7 @@ Foi adicionada a etapa 2 do projeto com um worker serverless em `/api/cron/news-
 
 Fluxo atual:
 
-1. consulta posts recentes no X via API oficial
+1. consulta feeds RSS oficiais de TechCrunch, Ars Technica e WIRED
 2. aplica scoring editorial e deduplicacao
 3. seleciona os 5-7 itens mais fortes
 4. gera um unico rascunho diario em Markdown
@@ -37,7 +37,6 @@ Use `.env.example` como base.
 Obrigatorias para o cron completo:
 
 - `CRON_SECRET`
-- `X_BEARER_TOKEN`
 - `GITHUB_TOKEN`
 - `GITHUB_REPO_OWNER`
 - `GITHUB_REPO_NAME`
@@ -46,6 +45,12 @@ O OpenAI e opcional:
 
 - com `OPENAI_API_KEY`, o corpo do digest e escrito pela IA
 - sem `OPENAI_API_KEY`, o sistema gera um fallback deterministico em Markdown
+
+Feeds RSS podem ser sobrescritos por env se voce quiser trocar a curadoria:
+
+- `RSS_TECHCRUNCH_FEED`
+- `RSS_ARS_TECHNICA_FEED`
+- `RSS_WIRED_FEED`
 
 ## Teste local
 
@@ -80,7 +85,7 @@ O arquivo `vercel.json` agenda o worker diariamente:
 
 ## Arquitetura adicionada
 
-- `src/lib/news-digest/sources/x.ts`: coletor do X
+- `src/lib/news-digest/sources/rss.ts`: coletor RSS das fontes editoriais
 - `src/lib/news-digest/editorial.ts`: scoring, filtragem e deduplicacao
 - `src/lib/news-digest/markdown.ts`: gera o rascunho em Markdown
 - `src/lib/news-digest/github.ts`: cria branch, commit e pull request via API do GitHub

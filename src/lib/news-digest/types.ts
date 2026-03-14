@@ -1,4 +1,4 @@
-export type NewsSource = 'x'
+export type NewsSource = 'techcrunch' | 'ars-technica' | 'wired'
 
 export interface NewsMetrics {
   likeCount?: number

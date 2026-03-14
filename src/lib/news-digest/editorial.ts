@@ -63,6 +63,11 @@ function scoreItem(item: NewsItem): { score: number; reasons: string[] } {
     reasons.push('fonte_oficial_ou_relevante')
   }
 
+  if (item.source === 'ars-technica') {
+    score += 1
+    reasons.push('fonte_editorial_profunda')
+  }
+
   if (item.rawText.length >= 180) {
     score += 1
     reasons.push('contexto_suficiente')

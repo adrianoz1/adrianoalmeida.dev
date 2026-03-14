@@ -2,7 +2,7 @@ import { type NewsDigestConfig } from './config'
 import { rankAndFilterItems } from './editorial'
 import { createDraftPullRequest } from './github'
 import { generateDigestDraft } from './markdown'
-import { collectNewsFromX } from './sources/x'
+import { collectNewsFromRss } from './sources/rss'
 import type { NewsDigestRunResult } from './types'
 
 function buildBranchName(slug: string): string {
@@ -10,7 +10,7 @@ function buildBranchName(slug: string): string {
 }
 
 export async function runNewsDigest(config: NewsDigestConfig, mode: 'dry-run' | 'pull-request'): Promise<NewsDigestRunResult> {
-  const collectedItems = await collectNewsFromX(config)
+  const collectedItems = await collectNewsFromRss(config)
   const { selectedItems, skippedItems } = rankAndFilterItems(
     collectedItems,
     config.minScore,
