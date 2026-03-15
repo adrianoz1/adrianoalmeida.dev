@@ -3,7 +3,6 @@ import {
   DynamoDBDocumentClient,
   GetCommand,
   PutCommand,
-  ScanCommand,
   UpdateCommand,
 } from '@aws-sdk/lib-dynamodb'
 import { randomUUID } from 'crypto'
@@ -21,21 +20,6 @@ interface SubscriberRecord {
   source?: string
 }
 
-interface DeliveryRecord {
-  pk: string
-  sk: 'STATUS'
-  entity: 'delivery'
-  postSlug: string
-  sentAt: string
-  recipientCount: number
-  resendIds: string[]
-}
-
-export interface NewsletterSubscriber {
-  email: string
-  unsubscribeToken: string
-}
-
 function buildClient(config: NewsletterConfig): DynamoDBDocumentClient {
   const client = new DynamoDBClient({
     region: config.awsRegion,
@@ -50,10 +34,6 @@ function buildClient(config: NewsletterConfig): DynamoDBDocumentClient {
 
 function getSubscriberPk(email: string): string {
   return `SUBSCRIBER#${email.toLowerCase()}`
-}
-
-function getDeliveryPk(postSlug: string): string {
-  return `DELIVERY#${postSlug}`
 }
 
 export async function upsertSubscriber(params: {
@@ -157,79 +137,4 @@ export async function unsubscribeSubscriber(params: {
   )
 
   return true
-}
-
-export async function listActiveSubscribers(config: NewsletterConfig): Promise<NewsletterSubscriber[]> {
-  const client = buildClient(config)
-  const subscribers: NewsletterSubscriber[] = []
-  let lastEvaluatedKey: Record<string, unknown> | undefined
-
-  do {
-    const response = await client.send(
-      new ScanCommand({
-        TableName: config.newsletterTableName,
-        ExclusiveStartKey: lastEvaluatedKey,
-        FilterExpression: 'entity = :entity AND #status = :status',
-        ExpressionAttributeNames: {
-          '#status': 'status',
-        },
-        ExpressionAttributeValues: {
-          ':entity': 'subscriber',
-          ':status': 'active',
-        },
-      })
-    )
-
-    for (const item of (response.Items || []) as SubscriberRecord[]) {
-      subscribers.push({
-        email: item.email,
-        unsubscribeToken: item.unsubscribeToken,
-      })
-    }
-
-    lastEvaluatedKey = response.LastEvaluatedKey
-  } while (lastEvaluatedKey)
-
-  return subscribers
-}
-
-export async function getDeliveryStatus(params: {
-  config: NewsletterConfig
-  postSlug: string
-}): Promise<DeliveryRecord | undefined> {
-  const { config, postSlug } = params
-  const client = buildClient(config)
-  const response = await client.send(
-    new GetCommand({
-      TableName: config.newsletterTableName,
-      Key: { pk: getDeliveryPk(postSlug), sk: 'STATUS' },
-    })
-  )
-
-  return response.Item as DeliveryRecord | undefined
-}
-
-export async function markDeliverySent(params: {
-  config: NewsletterConfig
-  postSlug: string
-  recipientCount: number
-  resendIds: string[]
-}): Promise<void> {
-  const { config, postSlug, recipientCount, resendIds } = params
-  const client = buildClient(config)
-
-  await client.send(
-    new PutCommand({
-      TableName: config.newsletterTableName,
-      Item: {
-        pk: getDeliveryPk(postSlug),
-        sk: 'STATUS',
-        entity: 'delivery',
-        postSlug,
-        sentAt: new Date().toISOString(),
-        recipientCount,
-        resendIds,
-      } satisfies DeliveryRecord,
-    })
-  )
 }

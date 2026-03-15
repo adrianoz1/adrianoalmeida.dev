@@ -29,7 +29,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
     })
 
     const messageByStatus = {
-      created: 'Inscricao confirmada. Os proximos posts publicados poderao chegar por email.',
+      created: 'Inscricao confirmada. Seu email foi salvo com sucesso.',
       reactivated: 'Sua inscricao foi reativada com sucesso.',
       'already-subscribed': 'Esse email ja esta inscrito.',
     }
