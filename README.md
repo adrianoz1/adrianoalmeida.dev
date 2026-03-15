@@ -29,7 +29,7 @@ Fluxo atual:
 5. abre uma PR automatica com o arquivo em `content/blog/drafts`
 6. salva o digest consolidado no DynamoDB (`abolhatech-daily-news` por padrao)
 
-O objetivo do arquivo gerado e servir como compilado diario para revisao antes de publicar no blog ou transformar em newsletter.
+O objetivo do arquivo gerado e servir como compilado diario para revisao antes de publicar no blog.
 
 ## Variaveis de ambiente
 
@@ -107,8 +107,6 @@ Foi adicionada uma base de newsletter com:
 - formulario de captura em `src/components/NewsletterSignup.tsx`
 - `POST /api/newsletter/subscribe` para salvar emails no DynamoDB
 - `GET /api/newsletter/unsubscribe` para cancelamento simples
-- `POST /api/newsletter/send-latest` para enviar o post publicado mais recente via Resend
-- workflow em `.github/workflows/send-newsletter-on-main.yml` para disparar o envio quando `content/blog/published/**` mudar na `main`
 
 ### Envs da newsletter
 
@@ -116,20 +114,6 @@ Foi adicionada uma base de newsletter com:
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `NEWSLETTER_TABLE_NAME`
-- `RESEND_API_KEY`
-- `NEWSLETTER_FROM_EMAIL`
-- `NEWSLETTER_REPLY_TO` opcional
-- `NEWSLETTER_DISPATCH_SECRET`
-- `SITE_URL`
-
-### Segredos no GitHub Actions
-
-Crie estes secrets no repositorio:
-
-- `NEWSLETTER_TRIGGER_URL`
-  Exemplo: `https://a2dev.com.br/api/newsletter/send-latest`
-- `NEWSLETTER_DISPATCH_SECRET`
-  Mesmo valor configurado na Vercel
 
 ### Testes manuais
 
@@ -139,20 +123,6 @@ Cadastrar email:
 curl -X POST "https://a2dev.com.br/api/newsletter/subscribe" \
   -H "Content-Type: application/json" \
   -d '{"email":"voce@exemplo.com"}'
-```
-
-Dry-run do disparo:
-
-```bash
-curl -X POST "https://a2dev.com.br/api/newsletter/send-latest?dryRun=1" \
-  -H "Authorization: Bearer $NEWSLETTER_DISPATCH_SECRET"
-```
-
-Disparo real:
-
-```bash
-curl -X POST "https://a2dev.com.br/api/newsletter/send-latest" \
-  -H "Authorization: Bearer $NEWSLETTER_DISPATCH_SECRET"
 ```
 
 ## Proximos refinamentos

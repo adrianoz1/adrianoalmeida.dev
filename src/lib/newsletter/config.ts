@@ -1,7 +1,3 @@
-function readOptionalString(name: string, fallback?: string): string | undefined {
-  return process.env[name] || fallback
-}
-
 function readRequiredString(name: string): string {
   const value = process.env[name]
 
@@ -17,11 +13,6 @@ export interface NewsletterConfig {
   awsAccessKeyId: string
   awsSecretAccessKey: string
   newsletterTableName: string
-  resendApiKey: string
-  newsletterFromEmail: string
-  newsletterReplyTo?: string
-  newsletterDispatchSecret: string
-  siteUrl: string
 }
 
 export function getNewsletterConfig(): NewsletterConfig {
@@ -30,10 +21,5 @@ export function getNewsletterConfig(): NewsletterConfig {
     awsAccessKeyId: readRequiredString('AWS_ACCESS_KEY_ID'),
     awsSecretAccessKey: readRequiredString('AWS_SECRET_ACCESS_KEY'),
     newsletterTableName: readRequiredString('NEWSLETTER_TABLE_NAME'),
-    resendApiKey: readRequiredString('RESEND_API_KEY'),
-    newsletterFromEmail: readRequiredString('NEWSLETTER_FROM_EMAIL'),
-    newsletterReplyTo: readOptionalString('NEWSLETTER_REPLY_TO'),
-    newsletterDispatchSecret: readRequiredString('NEWSLETTER_DISPATCH_SECRET'),
-    siteUrl: readRequiredString('SITE_URL'),
   }
 }
