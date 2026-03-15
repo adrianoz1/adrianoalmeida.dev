@@ -51,13 +51,3 @@ Fonte: [TechCrunch](https://techcrunch.com/2026/03/13/lawyer-behind-ai-psychosis
 ## Fechamento
 
 O cenário tecnológico atual é marcado por avanços que coexistem com desafios humanos e estruturais. Reparabilidade, reestruturações corporativas e riscos da inteligência artificial mostram que inovação e cautela precisam andar juntas. Acompanhar essas nuances é essencial para entender o futuro da tecnologia.
-
-## Auditoria do pipeline
-
-1. [The MacBook Neo is ‘the most repairable MacBook’ in years, according to iFixit](https://techcrunch.com/2026/03/14/the-macbook-neo-is-the-most-repairable-macbook-in-years-according-to-ifixit/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-2. [Meta reportedly considering layoffs that could affect 20% of the company](https://techcrunch.com/2026/03/14/meta-reportedly-considering-layoffs-that-could-affect-20-of-the-company/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-3. [As people look for ways to make new friends, here are the apps promising to help](https://techcrunch.com/2026/03/14/as-people-look-for-ways-to-make-new-friends-here-are-the-apps-promising-to-help/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-4. [Staff complain that xAI is flailing because of constant upheaval](https://arstechnica.com/ai/2026/03/staff-complain-that-xai-is-flailing-because-of-constant-upheaval/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
-5. [NASA officials sidestepped questions on Artemis II risks—there&#039;s a reason why](https://arstechnica.com/space/2026/03/flying-to-the-moon-for-the-first-time-in-54-years-is-risky-but-how-risky/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
-6. [&#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again](https://techcrunch.com/2026/03/13/not-built-right-the-first-time-musks-xai-is-starting-over-again-again/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-7. [Lawyer behind AI psychosis cases warns of mass casualty risks](https://techcrunch.com/2026/03/13/lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
