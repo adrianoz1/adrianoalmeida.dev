@@ -19,6 +19,10 @@ export interface NewsDigestConfig {
   authorName: string
   openAiApiKey?: string
   openAiModel: string
+  awsRegion?: string
+  awsAccessKeyId?: string
+  awsSecretAccessKey?: string
+  newsDigestTableName: string
   githubToken?: string
   githubOwner?: string
   githubRepo?: string
@@ -39,6 +43,10 @@ export function getNewsDigestConfig(): NewsDigestConfig {
     authorName: readOptionalStringEnv('NEWS_DIGEST_AUTHOR', 'Adriano Almeida'),
     openAiApiKey: process.env.OPENAI_API_KEY,
     openAiModel: readOptionalStringEnv('OPENAI_MODEL', 'gpt-4.1-mini'),
+    awsRegion: process.env.AWS_REGION,
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    newsDigestTableName: readOptionalStringEnv('NEWS_DIGEST_TABLE_NAME', 'abolhatech-daily-news'),
     githubToken: process.env.GITHUB_TOKEN,
     githubOwner: process.env.GITHUB_REPO_OWNER,
     githubRepo: process.env.GITHUB_REPO_NAME,
@@ -68,6 +76,16 @@ export function assertOpenAiConfig(config: NewsDigestConfig): asserts config is 
 } {
   if (!config.openAiApiKey) {
     throw new Error('OpenAI integration requires OPENAI_API_KEY')
+  }
+}
+
+export function assertNewsDigestStorageConfig(config: NewsDigestConfig): asserts config is NewsDigestConfig & {
+  awsRegion: string
+  awsAccessKeyId: string
+  awsSecretAccessKey: string
+} {
+  if (!config.awsRegion || !config.awsAccessKeyId || !config.awsSecretAccessKey) {
+    throw new Error('News digest DynamoDB storage requires AWS_REGION, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY')
   }
 }
 

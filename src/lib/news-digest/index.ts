@@ -1,4 +1,5 @@
 import { type NewsDigestConfig } from './config'
+import { saveNewsDigest } from './dynamodb'
 import { rankAndFilterItems } from './editorial'
 import { createDraftPullRequest } from './github'
 import { generateDigestDraft } from './markdown'
@@ -27,8 +28,10 @@ export async function runNewsDigest(config: NewsDigestConfig, mode: 'dry-run' | 
   if (mode === 'dry-run') {
     return {
       mode,
+      slug: draft.slug,
       draftPath,
       digestTitle: draft.title,
+      excerpt: draft.excerpt,
       selectedItems,
       skippedItems,
       markdown: draft.markdown,
@@ -45,12 +48,26 @@ export async function runNewsDigest(config: NewsDigestConfig, mode: 'dry-run' | 
     selectedCount: selectedItems.length,
   })
 
+  await saveNewsDigest({
+    config,
+    slug: draft.slug,
+    title: draft.title,
+    excerpt: draft.excerpt,
+    markdown: draft.markdown,
+    draftPath,
+    branchName,
+    pullRequestUrl,
+    selectedItems,
+  })
+
   return {
     mode,
+    slug: draft.slug,
     branchName,
     pullRequestUrl,
     draftPath,
     digestTitle: draft.title,
+    excerpt: draft.excerpt,
     selectedItems,
     skippedItems,
     markdown: draft.markdown,

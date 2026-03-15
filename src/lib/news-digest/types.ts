@@ -37,10 +37,12 @@ export interface GeneratedDraft {
 
 export interface NewsDigestRunResult {
   mode: 'dry-run' | 'pull-request'
+  slug: string
   branchName?: string
   pullRequestUrl?: string
   draftPath: string
   digestTitle: string
+  excerpt: string
   selectedItems: RankedNewsItem[]
   skippedItems: RankedNewsItem[]
   markdown: string
