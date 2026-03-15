@@ -43,7 +43,9 @@ export default async function handler(request: NextApiRequest, response: NextApi
     response.status(200).json({
       ok: true,
       mode: result.mode,
+      slug: result.slug,
       digestTitle: result.digestTitle,
+      excerpt: result.excerpt,
       draftPath: result.draftPath,
       branchName: result.branchName,
       pullRequestUrl: result.pullRequestUrl,
