@@ -51,13 +51,3 @@ A upGrad comprará a Unacademy após a queda drástica de avaliação desta últ
 ## Fechamento
 
 A inteligência artificial continua a moldar oportunidades e riscos, desde fraudes sofisticadas até desafios legais e sociais. Paralelamente, setores como entretenimento e educação tecnológica passam por transformações significativas, refletindo um mercado em constante evolução.
-
-## Auditoria do pipeline
-
-1. [‘100 Video Calls Per Day’: Models Are Applying to Be the Face of AI Scams](https://www.wired.com/story/models-are-applying-to-be-the-face-of-ai-scams/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-2. [The billionaires made a promise &#8212; now some want out](https://techcrunch.com/2026/03/15/the-billionaires-made-a-promise-now-some-want-out/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-3. [Netflix’s ‘Frankenstein’ wins three Oscars, ‘KPop Demon Hunters’ wins two](https://techcrunch.com/2026/03/15/netflixs-frankenstein-wins-three-oscars-kpop-demon-hunters-wins-two/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-4. [Google, Accel India accelerator chooses 5 startups and none are &#8216;AI wrappers&#8217;](https://techcrunch.com/2026/03/15/google-and-accel-cut-through-wrappers-in-4000-ai-startup-pitches-to-pick-five-tied-to-india/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-5. [ByteDance reportedly pauses global launch of its Seedance 2.0 video generator](https://techcrunch.com/2026/03/15/bytedance-reportedly-pauses-global-launch-of-its-seedance-2-0-video-generator/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-6. [Lawyer behind AI psychosis cases warns of mass casualty risks](https://techcrunch.com/2026/03/15/lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-7. [Unacademy to be acquired by upGrad in share-swap deal as India’s edtech sector consolidates](https://techcrunch.com/2026/03/15/unacademy-to-be-acquired-by-upgrad-in-share-swap-deal-as-indias-edtech-sector-consolidates/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
