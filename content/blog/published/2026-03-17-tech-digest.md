@@ -52,12 +52,3 @@ A Nvidia lançou o NemoClaw, plataforma aberta de agentes de IA baseada no proje
 
 As notícias de hoje mostram como tecnologia e segurança caminham juntas, seja no varejo, indústria ou inteligência artificial. A inovação continua acelerada, mas exige atenção constante à privacidade e confiabilidade dos sistemas. Seguimos acompanhando essas transformações.
 
-## Auditoria do pipeline
-
-1. [Amazon adds 1-hour and 3-hour delivery options in the US](https://techcrunch.com/2026/03/17/amazon-adds-1-hour-and-3-hour-delivery-options-in-the-us/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-2. [How Invisalign Became the World’s Biggest User of 3D Printers](https://www.wired.com/story/how-invisalign-became-the-worlds-biggest-3d-printing-company/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-3. [Gecko Robotics lands the largest U.S. Navy robotics deal yet](https://techcrunch.com/2026/03/17/gecko-robotics-lands-the-largest-u-s-navy-robotics-deal-yet/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-4. [Sears Exposed AI Chatbot Phone Calls and Text Chats to Anyone on the Web](https://www.wired.com/story/sears-exposed-ai-chatbot-phone-calls-and-text-chats-to-anyone-on-the-web/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-5. [Picsart now allows creators to &#8216;hire&#8217; AI assistants through agent marketplace](https://techcrunch.com/2026/03/16/picsart-now-allows-creators-to-hire-ai-assistants-through-agent-marketplace/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-6. [SEC eyes shift to twice-yearly earnings reports](https://techcrunch.com/2026/03/16/sec-eyes-shift-to-twice-yearly-earnings-reports/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-7. [Nvidia&#8217;s version of OpenClaw could solve its biggest problem: security](https://techcrunch.com/2026/03/16/nvidias-version-of-openclaw-could-solve-its-biggest-problem-security/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
