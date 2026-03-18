@@ -58,13 +58,3 @@ Fonte: [TechCrunch](https://techcrunch.com/2026/03/17/why-garry-tans-claude-code
 ## Fechamento
 
 O panorama de hoje destaca a crescente interseção entre tecnologia, regulação e ética, especialmente em IA e mobilidade elétrica. A disputa por controle e inovação segue moldando o futuro digital e físico. Fique atento às próximas movimentações.
-
-## Auditoria do pipeline
-
-1. [Here&#039;s BMW&#039;s first all-electric 3 series, the 2027 i3](https://arstechnica.com/cars/2026/03/heres-bmws-first-all-electric-3-series-the-2027-i3/) | score 6 | motivos: muito_recente, tema_tech_denso, fonte_editorial_profunda
-2. [Justice Department Says Anthropic Can’t Be Trusted With Warfighting Systems](https://www.wired.com/story/department-of-defense-responds-to-anthropic-lawsuit/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-3. [Kalshi&#8217;s legal troubles pile up, as Arizona files first ever criminal charges over &#8216;illegal gambling business&#8217;](https://techcrunch.com/2026/03/17/kalshis-legal-troubles-pile-up-as-arizona-files-first-ever-criminal-charges-over-illegal-gambling-business/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-4. [Apple can delist apps "with or without cause," judge says in loss for Musi app](https://arstechnica.com/tech-policy/2026/03/judge-upholds-apple-delisting-of-free-musi-app-that-streams-songs-from-youtube/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
-5. [How World ID wants to put a unique human identity on every AI agent](https://arstechnica.com/ai/2026/03/world-id-wants-you-to-put-a-cryptographically-unique-human-identity-behind-your-ai-agents/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
-6. [Mistral bets on ‘build-your-own AI’ as it takes on OpenAI, Anthropic in the enterprise](https://techcrunch.com/2026/03/17/mistral-forge-nvidia-gtc-build-your-own-ai-enterprise/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-7. [Why Garry Tan&#8217;s Claude Code setup has gotten so much love, and hate](https://techcrunch.com/2026/03/17/why-garry-tans-claude-code-setup-has-gotten-so-much-love-and-hate/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
