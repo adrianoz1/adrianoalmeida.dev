@@ -52,12 +52,3 @@ A União Europeia planeja banir aplicativos de "nudify", o que pode forçar Elon
 
 O cenário tecnológico atual é marcado por avanços que exigem equilíbrio entre inovação e responsabilidade. A regulação da IA e o fortalecimento da indústria local de minerais críticos são exemplos de desafios que impactam tanto o mercado quanto a sociedade. Seguimos acompanhando de perto.
 
-## Auditoria do pipeline
-
-1. [Inside a $1.1B deal to reshore critical minerals refining](https://techcrunch.com/2026/03/19/inside-a-1-1b-deal-to-reshore-critical-minerals-refining/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-2. [The Fight to Hold AI Companies Accountable for Children’s Deaths](https://www.wired.com/story/how-ai-chatbots-drove-families-to-the-brink-and-the-lawyer-fighting-back/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-3. [Multiverse Computing pushes its compressed AI models into the mainstream](https://techcrunch.com/2026/03/19/multiverse-computing-pushes-its-compressed-ai-models-into-the-mainstream/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-4. [Two Palantir veterans just came out of stealth with $30 million and a Sequoia stamp of approval](https://techcrunch.com/2026/03/18/two-palantir-veterans-just-came-out-of-stealth-with-30-million-and-a-sequoia-stamp-of-approval/) | score 5 | motivos: muito_recente, tema_tech_denso
-5. [Meta is having trouble with rogue AI agents](https://techcrunch.com/2026/03/18/meta-is-having-trouble-with-rogue-ai-agents/) | score 5 | motivos: muito_recente, tema_tech_denso
-6. [Kagi Translate&#039;s AI answers the question "What would horny Margaret Thatcher say?"](https://arstechnica.com/ai/2026/03/kagi-translates-ai-answers-the-question-what-would-horny-margaret-thatcher-say/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
-7. [Musk’s tactic of blaming users for Grok sex images may be foiled by EU law](https://arstechnica.com/tech-policy/2026/03/eu-moves-to-ban-nudify-apps-after-grok-made-them-mainstream/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
