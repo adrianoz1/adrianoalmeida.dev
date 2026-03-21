@@ -30,7 +30,8 @@ export interface RankedNewsItem extends NewsItem {
 export interface GeneratedDraft {
   slug: string
   title: string
-  markdown: string
+  draftMarkdown: string
+  publishedMarkdown: string
   excerpt: string
   tags: string[]
 }
@@ -41,9 +42,11 @@ export interface NewsDigestRunResult {
   branchName?: string
   pullRequestUrl?: string
   draftPath: string
+  publishedPath: string
   digestTitle: string
   excerpt: string
   selectedItems: RankedNewsItem[]
   skippedItems: RankedNewsItem[]
   markdown: string
+  publishedMarkdown?: string
 }

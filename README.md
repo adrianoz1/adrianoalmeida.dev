@@ -25,8 +25,8 @@ Fluxo atual:
 1. consulta feeds RSS oficiais de TechCrunch, Ars Technica e WIRED
 2. aplica scoring editorial e deduplicacao
 3. seleciona os 5-7 itens mais fortes
-4. gera um unico rascunho diario em Markdown
-5. abre uma PR automatica com o arquivo em `content/blog/drafts`
+4. gera as versoes de draft e published do digest em Markdown
+5. abre uma PR automatica com os arquivos em `content/blog/drafts` e `content/blog/published`
 6. salva o digest consolidado no DynamoDB (`abolhatech-daily-news` por padrao)
 
 O objetivo do arquivo gerado e servir como compilado diario para revisao antes de publicar no blog.
@@ -59,6 +59,11 @@ Feeds RSS podem ser sobrescritos por env se voce quiser trocar a curadoria:
 Persistencia do digest:
 
 - `NEWS_DIGEST_TABLE_NAME` opcional, padrao `abolhatech-daily-news`
+
+Paths do repositorio podem ser sobrescritos por env:
+
+- `GITHUB_DRAFTS_PATH`
+- `GITHUB_PUBLISHED_PATH`
 
 ## Teste local
 
@@ -95,7 +100,7 @@ O arquivo `vercel.json` agenda o worker diariamente:
 
 - `src/lib/news-digest/sources/rss.ts`: coletor RSS das fontes editoriais
 - `src/lib/news-digest/editorial.ts`: scoring, filtragem e deduplicacao
-- `src/lib/news-digest/markdown.ts`: gera o rascunho em Markdown
+- `src/lib/news-digest/markdown.ts`: gera as versoes de draft e published em Markdown
 - `src/lib/news-digest/dynamodb.ts`: persiste o digest consolidado no DynamoDB
 - `src/lib/news-digest/github.ts`: cria branch, commit e pull request via API do GitHub
 - `src/pages/api/cron/news-digest.ts`: endpoint do cron

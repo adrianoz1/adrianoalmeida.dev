@@ -26,6 +26,44 @@ function escapeYaml(value: string): string {
   return value.replace(/"/g, '\\"')
 }
 
+function buildFrontmatter(params: {
+  title: string
+  excerpt: string
+  publishDate: string
+  authorName: string
+  tags: string[]
+  canonicalSource: string
+  isDraft: boolean
+}): string {
+  const { title, excerpt, publishDate, authorName, tags, canonicalSource, isDraft } = params
+
+  return [
+    '---',
+    `title: "${escapeYaml(title)}"`,
+    `excerpt: "${escapeYaml(excerpt)}"`,
+    `date: "${publishDate}"`,
+    `author: "${escapeYaml(authorName)}"`,
+    `tags: [${tags.map((tag) => `"${escapeYaml(tag)}"`).join(', ')}]`,
+    `coverTitle: "Daily Tech Digest"`,
+    `canonicalSource: "${escapeYaml(canonicalSource)}"`,
+    ...(isDraft ? ['draft: true'] : []),
+    'automation: "news-digest"',
+    '---',
+    '',
+  ].join('\n')
+}
+
+function buildSourceAuditTrail(items: RankedNewsItem[]): string {
+  return [
+    '',
+    '## Auditoria do pipeline',
+    '',
+    ...items.map((item, index) => {
+      return `${index + 1}. [${item.title}](${item.url}) | score ${item.score} | motivos: ${item.scoreReasons.join(', ')}`
+    }),
+  ].join('\n')
+}
+
 function buildFallbackBody(items: RankedNewsItem[]): string {
   const sections = items.map((item, index) => {
     const authorLabel = item.authorHandle ? `@${item.authorHandle}` : item.authorName || 'fonte sem identificacao'
@@ -156,35 +194,33 @@ export async function generateDigestDraft(config: NewsDigestConfig, items: Ranke
     ? await generateBodyWithOpenAi(config, items, publishDate)
     : buildFallbackBody(items)
 
-  const frontmatter = [
-    '---',
-    `title: "${escapeYaml(title)}"`,
-    `excerpt: "${escapeYaml(excerpt)}"`,
-    `date: "${publishDate}"`,
-    `author: "${escapeYaml(config.authorName)}"`,
-    `tags: [${tags.map((tag) => `"${escapeYaml(tag)}"`).join(', ')}]`,
-    `coverTitle: "Daily Tech Digest"`,
-    `canonicalSource: "${escapeYaml(getRequiredRepositoryUrl(config))}"`,
-    'draft: true',
-    'automation: "news-digest"',
-    '---',
-    '',
-  ].join('\n')
-
-  const sourceAuditTrail = [
-    '',
-    '## Auditoria do pipeline',
-    '',
-    ...items.map((item, index) => {
-      return `${index + 1}. [${item.title}](${item.url}) | score ${item.score} | motivos: ${item.scoreReasons.join(', ')}`
-    }),
-  ].join('\n')
+  const canonicalSource = getRequiredRepositoryUrl(config)
+  const draftFrontmatter = buildFrontmatter({
+    title,
+    excerpt,
+    publishDate,
+    authorName: config.authorName,
+    tags,
+    canonicalSource,
+    isDraft: true,
+  })
+  const publishedFrontmatter = buildFrontmatter({
+    title,
+    excerpt,
+    publishDate,
+    authorName: config.authorName,
+    tags,
+    canonicalSource,
+    isDraft: false,
+  })
+  const sourceAuditTrail = buildSourceAuditTrail(items)
 
   return {
     slug,
     title,
     excerpt,
     tags,
-    markdown: `${frontmatter}${body.trim()}\n${sourceAuditTrail}\n`,
+    draftMarkdown: `${draftFrontmatter}${body.trim()}\n${sourceAuditTrail}\n`,
+    publishedMarkdown: `${publishedFrontmatter}${body.trim()}\n`,
   }
 }

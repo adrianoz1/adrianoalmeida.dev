@@ -13,6 +13,7 @@ interface NewsDigestRecord {
   markdown: string
   digestDate: string
   draftPath: string
+  publishedPath: string
   branchName?: string
   pullRequestUrl?: string
   selectedCount: number
@@ -56,11 +57,12 @@ export async function saveNewsDigest(params: {
   excerpt: string
   markdown: string
   draftPath: string
+  publishedPath: string
   branchName?: string
   pullRequestUrl?: string
   selectedItems: RankedNewsItem[]
 }): Promise<void> {
-  const { config, slug, title, excerpt, markdown, draftPath, branchName, pullRequestUrl, selectedItems } = params
+  const { config, slug, title, excerpt, markdown, draftPath, publishedPath, branchName, pullRequestUrl, selectedItems } = params
   const client = buildClient(config)
 
   await client.send(
@@ -76,6 +78,7 @@ export async function saveNewsDigest(params: {
         markdown,
         digestDate: getDigestDateFromSlug(slug),
         draftPath,
+        publishedPath,
         branchName,
         pullRequestUrl,
         selectedCount: selectedItems.length,
