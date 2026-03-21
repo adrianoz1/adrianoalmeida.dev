@@ -51,13 +51,3 @@ Brian Barrett e Zoë Schiffer comentam a conferência anual da Nvidia, destacand
 ## Fechamento
 
 O avanço tecnológico segue acelerado, mas revela complexidades humanas e institucionais. De inovações promissoras a tensões políticas e emocionais, o futuro da tecnologia exige equilíbrio entre progresso e responsabilidade.
-
-## Auditoria do pipeline
-
-1. [I Learned More Than I Thought I Would From Using Food-Tracking Apps](https://www.wired.com/story/food-tracking-apps-ai-nutrition-weight-loss/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-2. [LinkedIn Invited My AI 'Cofounder' to Give a Corporate Talk—Then Banned It](https://www.wired.com/story/linkedin-invited-my-ai-cofounder-to-give-a-corporate-talk-then-banned-it/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-3. [Amazon acquires Rivr, maker of a stair-climbing delivery robot](https://techcrunch.com/2026/03/19/amazon-acquires-rivr-maker-of-a-stair-climbing-delivery-robot/) | score 6 | motivos: muito_recente, tema_tech_denso, contexto_suficiente
-4. [Dogfighting in space won&#039;t look like the movies, but this company wants in on it](https://arstechnica.com/space/2026/03/dogfighting-in-space-this-company-builds-satellites-for-high-tempo-engagement/) | score 6 | motivos: recente, tema_tech_denso, fonte_editorial_profunda, contexto_suficiente
-5. [RFK Jr. has destroyed over a quarter of health dept&#039;s expert panels](https://arstechnica.com/health/2026/03/rfk-jr-s-war-on-scientific-expertise-destroyed-27-of-agencys-advisor-panels/) | score 5 | motivos: recente, tema_tech_denso, fonte_editorial_profunda
-6. [Jeff Bezos reportedly wants $100 billion to buy and transform old manufacturing firms with AI](https://techcrunch.com/2026/03/19/jeff-bezos-reportedly-wants-100-billion-to-buy-and-transform-old-manufacturing-firms-with-ai/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
-7. [‘Uncanny Valley’: Nvidia’s ‘Super Bowl of AI,’ Tesla Disappoints, and Meta’s VR Metaverse ‘Shutdown’](https://www.wired.com/story/uncanny-valley-podcast-nvidia-gtc-tesla-disappointed-fans-meta-horizon-worlds/) | score 5 | motivos: recente, tema_tech_denso, contexto_suficiente
