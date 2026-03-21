@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 import { Box, ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../styles/theme'
 import { ThemeToggle } from '../components/ThemeToggle'
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ThemeToggle />
         </Box>
         <Component {...pageProps} />
+        <Analytics />
       </ChakraProvider>
     </div>
   )
