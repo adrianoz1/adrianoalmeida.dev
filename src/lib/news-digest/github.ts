@@ -157,15 +157,17 @@ async function createPullRequest(config: NewsDigestConfig, branchName: string, t
   return pullRequest.html_url
 }
 
-export async function createDraftPullRequest(params: {
+export async function createDigestPullRequest(params: {
   config: NewsDigestConfig
   branchName: string
   draftPath: string
-  markdown: string
+  publishedPath: string
+  draftMarkdown: string
+  publishedMarkdown: string
   digestTitle: string
   selectedCount: number
 }): Promise<string> {
-  const { config, branchName, draftPath, markdown, digestTitle, selectedCount } = params
+  const { config, branchName, draftPath, publishedPath, draftMarkdown, publishedMarkdown, digestTitle, selectedCount } = params
   assertGitHubConfig(config)
 
   await ensureBranch(config, branchName)
@@ -173,8 +175,15 @@ export async function createDraftPullRequest(params: {
     config,
     branchName,
     draftPath,
-    markdown,
+    draftMarkdown,
     `chore: add draft ${digestTitle.toLowerCase()}`
+  )
+  await createOrUpdateFile(
+    config,
+    branchName,
+    publishedPath,
+    publishedMarkdown,
+    `chore: publish ${digestTitle.toLowerCase()}`
   )
 
   return createPullRequest(
@@ -185,8 +194,9 @@ export async function createDraftPullRequest(params: {
       `PR automatica com rascunho diario do blog.`,
       '',
       `- itens selecionados: ${selectedCount}`,
-      `- arquivo: \`${draftPath}\``,
-      `- revisar contexto, links e tom editorial antes de publicar`,
+      `- draft: \`${draftPath}\``,
+      `- published: \`${publishedPath}\``,
+      `- revisar contexto, links e tom editorial antes do merge`,
     ].join('\n')
   )
 }

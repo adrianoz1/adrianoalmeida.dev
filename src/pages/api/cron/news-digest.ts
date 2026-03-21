@@ -47,6 +47,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
       digestTitle: result.digestTitle,
       excerpt: result.excerpt,
       draftPath: result.draftPath,
+      publishedPath: result.publishedPath,
       branchName: result.branchName,
       pullRequestUrl: result.pullRequestUrl,
       selectedCount: result.selectedItems.length,
@@ -58,6 +59,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
         scoreReasons: item.scoreReasons,
       })),
       markdown: dryRun ? result.markdown : undefined,
+      publishedMarkdown: dryRun ? result.publishedMarkdown : undefined,
     })
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error'

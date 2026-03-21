@@ -28,6 +28,7 @@ export interface NewsDigestConfig {
   githubRepo?: string
   githubBaseBranch: string
   githubDraftsPath: string
+  githubPublishedPath: string
   maxSelectedItems: number
   minScore: number
   repoUrl?: string
@@ -52,6 +53,7 @@ export function getNewsDigestConfig(): NewsDigestConfig {
     githubRepo: process.env.GITHUB_REPO_NAME,
     githubBaseBranch: readOptionalStringEnv('GITHUB_BASE_BRANCH', 'main'),
     githubDraftsPath: readOptionalStringEnv('GITHUB_DRAFTS_PATH', 'content/blog/drafts'),
+    githubPublishedPath: readOptionalStringEnv('GITHUB_PUBLISHED_PATH', 'content/blog/published'),
     maxSelectedItems: readOptionalNumberEnv('NEWS_DIGEST_MAX_ITEMS', 7),
     minScore: readOptionalNumberEnv('NEWS_DIGEST_MIN_SCORE', 2),
     repoUrl: process.env.GITHUB_REPOSITORY_URL,

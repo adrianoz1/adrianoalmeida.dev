@@ -1,7 +1,7 @@
 import { type NewsDigestConfig } from './config'
 import { saveNewsDigest } from './dynamodb'
 import { rankAndFilterItems } from './editorial'
-import { createDraftPullRequest } from './github'
+import { createDigestPullRequest } from './github'
 import { generateDigestDraft } from './markdown'
 import { collectNewsFromRss } from './sources/rss'
 import type { NewsDigestRunResult } from './types'
@@ -24,26 +24,31 @@ export async function runNewsDigest(config: NewsDigestConfig, mode: 'dry-run' | 
 
   const draft = await generateDigestDraft(config, selectedItems)
   const draftPath = `${config.githubDraftsPath}/${draft.slug}.md`
+  const publishedPath = `${config.githubPublishedPath}/${draft.slug}.md`
 
   if (mode === 'dry-run') {
     return {
       mode,
       slug: draft.slug,
       draftPath,
+      publishedPath,
       digestTitle: draft.title,
       excerpt: draft.excerpt,
       selectedItems,
       skippedItems,
-      markdown: draft.markdown,
+      markdown: draft.draftMarkdown,
+      publishedMarkdown: draft.publishedMarkdown,
     }
   }
 
   const branchName = buildBranchName(draft.slug)
-  const pullRequestUrl = await createDraftPullRequest({
+  const pullRequestUrl = await createDigestPullRequest({
     config,
     branchName,
     draftPath,
-    markdown: draft.markdown,
+    publishedPath,
+    draftMarkdown: draft.draftMarkdown,
+    publishedMarkdown: draft.publishedMarkdown,
     digestTitle: draft.title,
     selectedCount: selectedItems.length,
   })
@@ -53,8 +58,9 @@ export async function runNewsDigest(config: NewsDigestConfig, mode: 'dry-run' | 
     slug: draft.slug,
     title: draft.title,
     excerpt: draft.excerpt,
-    markdown: draft.markdown,
+    markdown: draft.publishedMarkdown,
     draftPath,
+    publishedPath,
     branchName,
     pullRequestUrl,
     selectedItems,
@@ -66,10 +72,12 @@ export async function runNewsDigest(config: NewsDigestConfig, mode: 'dry-run' | 
     branchName,
     pullRequestUrl,
     draftPath,
+    publishedPath,
     digestTitle: draft.title,
     excerpt: draft.excerpt,
     selectedItems,
     skippedItems,
-    markdown: draft.markdown,
+    markdown: draft.draftMarkdown,
+    publishedMarkdown: draft.publishedMarkdown,
   }
 }
