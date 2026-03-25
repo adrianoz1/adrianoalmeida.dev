@@ -65,10 +65,10 @@ export function NewsletterSignup(): JSX.Element {
           Newsletter
         </Text>
         <Heading as="h2" fontSize={{ base: '2xl', md: '4xl' }} letterSpacing="-0.04em" maxW="18ch">
-          Cadastre seu email para acompanhar as proximas novidades do blog.
+          Entre na lista para receber as proximas novidades.
         </Heading>
         <Text color={mutedText} maxW="2xl" lineHeight="1.8">
-          Guardamos seu contato para a proxima etapa do projeto, sem disparo automatico de emails por enquanto.
+          Ainda nao ha disparos recorrentes. A lista vai receber os primeiros avisos quando a newsletter entrar no ar.
         </Text>
 
         <form onSubmit={handleSubmit}>
@@ -92,7 +92,7 @@ export function NewsletterSignup(): JSX.Element {
               _hover={{ bg: 'brand.300' }}
               isLoading={status === 'loading'}
             >
-              Quero me cadastrar
+              Entrar na lista
             </Button>
           </Stack>
         </form>
