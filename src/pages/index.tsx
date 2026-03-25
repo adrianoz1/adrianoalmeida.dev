@@ -21,10 +21,8 @@ import {
 } from '@chakra-ui/react'
 import {
   RiArrowRightUpLine,
-  RiCodeBoxLine,
   RiGithubFill,
   RiInstagramFill,
-  RiLightbulbFlashLine,
   RiMailFill,
   RiVideoLine,
   RiWhatsappFill,
@@ -41,59 +39,65 @@ const channelHighlights = [
     handle: '@aa2dev',
     href: 'https://www.youtube.com/@aa2dev',
     icon: RiYoutubeFill,
-    eyebrow: 'Videoaulas e análises',
+    eyebrow: 'Profundidade com contexto',
     description:
-      'Conteúdo aprofundado sobre desenvolvimento, carreira, arquitetura e ferramentas que realmente ajudam a entregar software melhor.',
+      'Videos para evoluir em programacao, arquitetura e carreira sem ficar preso em tutorial raso.',
   },
   {
     name: 'Instagram',
     handle: '@aa2dev',
     href: 'https://www.instagram.com/aa2dev',
     icon: RiInstagramFill,
-    eyebrow: 'Cortes, bastidores e dicas',
+    eyebrow: 'Bastidores e consistencia',
     description:
-      'Pílulas rápidas com insights de programação, rotina de dev, produtividade e decisões práticas do dia a dia em tecnologia.',
+      'Dicas, cortes e insights rapidos para manter repertorio tecnico e ritmo de aprendizado.',
   },
   {
     name: 'TikTok',
     handle: '@aa2dev',
     href: 'https://www.tiktok.com/@aa2dev',
     icon: RiVideoLine,
-    eyebrow: 'Tech em formato curto',
+    eyebrow: 'Aprendizado rapido',
     description:
-      'Vídeos objetivos para explicar conceitos, tendências e atalhos de quem quer aprender mais rápido sem conteúdo enrolado.',
+      'Explicacoes curtas e diretas para aprender conceitos, tendencias e atalhos sem enrolacao.',
   },
 ]
 
-const focusAreas = [
+const valuePoints = [
   {
-    title: 'Programação com contexto',
-    text: 'Conteúdo feito para quem quer sair do tutorial raso e entender trade-offs, produto e manutenção de software.',
-    icon: RiCodeBoxLine,
+    title: 'Programacao com contexto',
+    text: 'Trade-offs, produto e manutencao de software sem teoria solta.',
   },
   {
-    title: 'Tecnologia aplicada',
-    text: 'React, TypeScript, arquitetura, ferramentas modernas e decisões que geram impacto real em produto e negócio.',
-    icon: RiLightbulbFlashLine,
+    title: 'Ferramentas que valem o tempo',
+    text: 'React, TypeScript, arquitetura, IA e processos que ajudam a entregar melhor.',
   },
   {
-    title: 'Consistência de produção',
-    text: 'Vídeos, posts e cortes pensados para educar, compartilhar experiência prática e fortalecer a comunidade dev.',
-    icon: RiVideoLine,
+    title: 'Conteudo aplicavel',
+    text: 'Videos, posts e cortes para usar no trabalho real e nao so consumir.',
   },
 ]
 
 const stats = [
-  '12+ anos atuando como programador',
-  'Conteúdo sobre programação e tecnologia',
-  'Presença ativa em YouTube, Instagram e TikTok',
+  {
+    value: '12+',
+    label: 'anos em projetos reais',
+  },
+  {
+    value: 'Sem hype',
+    label: 'conteudo direto e aplicavel',
+  },
+  {
+    value: '3 formatos',
+    label: 'blog, video e conteudo curto',
+  },
 ]
 
 const Home: NextPage = () => {
   const pageBorder = useColorModeValue('gray.200', 'borderSubtle')
   const pageTitle = 'Adriano Almeida | Programacao, tecnologia e conteudo dev'
   const pageDescription =
-    'Programacao e tecnologia com linguagem clara e execucao real. Conteudos sobre desenvolvimento, arquitetura, ferramentas e carreira para devs que querem ir alem do raso.'
+    'Conteudo direto para devs que querem pensar melhor, codar com mais clareza e acompanhar tecnologia sem hype nem enrolacao.'
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -140,22 +144,23 @@ const Home: NextPage = () => {
         <Flex
           as="header"
           align="center"
-          justify="space-between"
+          justify={{ base: 'center', md: 'space-between' }}
+          direction={{ base: 'column', md: 'row' }}
           gap="4"
           py="4"
           mb={{ base: 10, md: 14 }}
           wrap="wrap"
         >
-          <VStack align="flex-start" spacing="0">
+          <VStack align={{ base: 'center', md: 'flex-start' }} spacing="0">
             <Text fontSize="2xl" fontWeight="700" letterSpacing="-0.04em">
               aa<Text as="span" color="brand.400">.</Text>dev
             </Text>
-            <Text color={mutedText} fontSize="sm">
+            <Text color={mutedText} fontSize="sm" textAlign={{ base: 'center', md: 'left' }}>
               programador e produtor de conteudo com visao pratica
             </Text>
           </VStack>
 
-          <HStack spacing={{ base: 2, md: 3 }} flexWrap="wrap" justify="flex-end">
+          <HStack spacing={{ base: 2, md: 3 }} flexWrap="wrap" justify={{ base: 'center', md: 'flex-end' }}>
             <NextLink href="/blog" passHref legacyBehavior>
               <Button as="a" variant="ghost" color={primaryText} _hover={{ bg: ghostHover }}>
                 Blog
@@ -181,8 +186,8 @@ const Home: NextPage = () => {
 
         <Grid templateColumns={{ base: '1fr', lg: '1.15fr 0.85fr' }} gap={{ base: 10, lg: 8 }} alignItems="center">
           <GridItem>
-            <Stack spacing="7">
-              <HStack spacing="3" wrap="wrap">
+            <Stack spacing="7" align={{ base: 'center', md: 'stretch' }}>
+              <HStack spacing="3" wrap="wrap" justify={{ base: 'center', md: 'flex-start' }}>
                 <Badge bg={subtleBadgeBg} color={accentText} px="3" py="1.5" borderRadius="full">
                   Programador e criador de conteudo tech
                 </Badge>
@@ -197,75 +202,71 @@ const Home: NextPage = () => {
                   fontSize={{ base: '4xl', md: '6xl' }}
                   lineHeight={{ base: 1.05, md: 0.96 }}
                   letterSpacing="-0.05em"
-                  maxW="10ch"
+                  maxW="11ch"
+                  mx={{ base: 'auto', md: '0' }}
+                  textAlign={{ base: 'center', md: 'left' }}
                 >
-                  Programacao e tecnologia com linguagem clara e execucao real.
+                  Conteudo para dev que quer entregar melhor.
                 </Heading>
 
-                <Text fontSize={{ base: 'lg', md: 'xl' }} color={mutedText} maxW="2xl" lineHeight="1.8">
-                  Sou Adriano Almeida, programador com mais de 12 anos de experiencia e produtor de conteudo sobre
-                  programacao e tecnologia. Transformo vivencia pratica em conteudo para ajudar devs a pensar melhor,
-                  codar com mais clareza e acompanhar a evolucao da area sem hype vazio.
+                <Text
+                  fontSize={{ base: 'lg', md: 'xl' }}
+                  color={mutedText}
+                  maxW="2xl"
+                  lineHeight="1.8"
+                  textAlign={{ base: 'center', md: 'left' }}
+                >
+                  Programacao, arquitetura, ferramentas e carreira com visao pratica. Eu transformo experiencia real
+                  de produto e engenharia em conteudo claro, objetivo e util para o dia a dia de quem desenvolve.
                 </Text>
               </Stack>
 
-              <HStack spacing="4" wrap="wrap">
+              <SimpleGrid columns={{ base: 1, md: 3 }} spacing="4" maxW="4xl" width="100%">
                 <NextLink href="/blog" passHref legacyBehavior>
                   <Button
                     as="a"
                     size="lg"
-                    variant="outline"
-                    color={primaryText}
-                    borderColor={pageBorder}
-                    px="8"
-                    _hover={{ bg: outlineBgHover }}
-                  >
-                    Ler o blog
-                  </Button>
-                </NextLink>
-                <Link href="https://www.youtube.com/@aa2dev" isExternal>
-                  <Button
-                    size="lg"
+                    
                     bg="brand.400"
                     color="gray.900"
-                    px="8"
+                    borderColor={pageBorder}
+                    width="100%"
+                    minH="64px"
                     _hover={{ bg: 'brand.300' }}
+
+                  >
+                    Explorar blog
+                  </Button>
+                </NextLink>
+                <Link href="https://www.youtube.com/@aa2dev" isExternal display="block" width="100%">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    width="100%"
+                    minH="64px"
+                    _hover={{ bg: outlineBgHover }}
+
                     rightIcon={<Icon as={RiArrowRightUpLine} />}
                   >
-                    Ver conteudos
+                     YouTube
                   </Button>
                 </Link>
-                <Link href="mailto:contato@a2dev.com.br">
+                <Link href="mailto:contato@a2dev.com.br" display="block" width="100%">
                   <Button
                     size="lg"
                     variant="outline"
                     color={primaryText}
                     borderColor={pageBorder}
-                    px="8"
+                    width="100%"
+                    minH="64px"
                     _hover={{ bg: outlineBgHover }}
                   >
                     Falar comigo
                   </Button>
                 </Link>
-              </HStack>
-
-              <SimpleGrid columns={{ base: 1, md: 3 }} spacing="4" maxW="3xl">
-                {stats.map((stat) => (
-                  <Box
-                    key={stat}
-                    p="4"
-                    borderRadius="2xl"
-                    bg={cardBg}
-                    border="1px solid"
-                    borderColor={pageBorder}
-                    boxShadow={solidShadow}
-                  >
-                    <Text color={primaryText} fontWeight="500">
-                      {stat}
-                    </Text>
-                  </Box>
-                ))}
               </SimpleGrid>
+
+
             </Stack>
           </GridItem>
 
@@ -282,10 +283,10 @@ const Home: NextPage = () => {
                 <HStack justify="space-between" align="flex-start">
                   <VStack align="flex-start" spacing="1">
                     <Text color={mutedText} fontSize="sm" textTransform="uppercase" letterSpacing="0.16em">
-                      Perfil
+                      Clareza e pratica
                     </Text>
                     <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }}>
-                      Adriano Almeida
+                      O que voce encontra aqui
                     </Heading>
                   </VStack>
 
@@ -299,31 +300,6 @@ const Home: NextPage = () => {
                   />
                 </HStack>
 
-                <Text color={mutedText} lineHeight="1.9">
-                  Atuo como programador e produtor de conteudo, criando materiais para quem quer evoluir como dev e
-                  entender tecnologia de um jeito aplicavel: programacao, ferramentas, arquitetura, carreira e visao
-                  de produto.
-                </Text>
-
-                <SimpleGrid columns={2} spacing="4">
-                  <Box p="4" borderRadius="24px" bg={altCardBg} border="1px solid" borderColor={pageBorder}>
-                    <Text color={mutedText} fontSize="sm">
-                      Formato
-                    </Text>
-                    <Text fontSize="lg" fontWeight="600">
-                      videos, posts e cortes
-                    </Text>
-                  </Box>
-                  <Box p="4" borderRadius="24px" bg={altCardBg} border="1px solid" borderColor={pageBorder}>
-                    <Text color={mutedText} fontSize="sm">
-                      Tema central
-                    </Text>
-                    <Text fontSize="lg" fontWeight="600">
-                      programacao e tecnologia
-                    </Text>
-                  </Box>
-                </SimpleGrid>
-
                 <HStack spacing="4" color={mutedText}>
                   <Icon as={RiGithubFill} />
                   <Link href="https://www.github.com/adrianoz1" isExternal _hover={{ color: 'linkAccent' }}>
@@ -335,19 +311,16 @@ const Home: NextPage = () => {
           </GridItem>
         </Grid>
 
-        <NewsletterSignup />
-
         <Box mt={{ base: 20, md: 28 }}>
           <Stack spacing="4" mb="8">
             <Text color={accentText} fontWeight="600" letterSpacing="0.12em" textTransform="uppercase" fontSize="sm">
-              Producao de conteudo
+              Escolha o formato
             </Text>
-            <Heading fontSize={{ base: '3xl', md: '5xl' }} maxW="12ch">
-              Onde acompanhar os conteudos do @aa2dev
+            <Heading fontSize={{ base: '3xl', md: '5xl' }} maxW="10ch">
+              Onde acompanhar o meu conteudo
             </Heading>
             <Text color={mutedText} maxW="2xl" lineHeight="1.8">
-              Cada rede tem um papel diferente: profundidade no YouTube, ritmo e bastidores no Instagram, e videos
-              rapidos no TikTok para aprender em poucos minutos.
+              Cada canal tem uma funcao clara para voce aprender no ritmo que fizer mais sentido.
             </Text>
           </Stack>
 
@@ -409,42 +382,6 @@ const Home: NextPage = () => {
           </SimpleGrid>
         </Box>
 
-        <Box mt={{ base: 20, md: 28 }}>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing="6">
-            {focusAreas.map((item) => (
-              <Box
-                key={item.title}
-                p="6"
-                borderRadius="28px"
-                bg={cardBg}
-                border="1px solid"
-                borderColor={pageBorder}
-                boxShadow={solidShadow}
-              >
-                <Stack spacing="4">
-                  <Flex
-                    width="12"
-                    height="12"
-                    borderRadius="2xl"
-                    align="center"
-                    justify="center"
-                    bg="brand.400"
-                    color="gray.900"
-                  >
-                    <Icon as={item.icon} boxSize="6" />
-                  </Flex>
-                  <Heading as="h3" fontSize="2xl">
-                    {item.title}
-                  </Heading>
-                  <Text color={mutedText} lineHeight="1.8">
-                    {item.text}
-                  </Text>
-                </Stack>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
-
         <Box
           mt={{ base: 20, md: 28 }}
           p={{ base: 7, md: 10 }}
@@ -456,14 +393,13 @@ const Home: NextPage = () => {
         >
           <Stack spacing="6" align={{ base: 'flex-start', md: 'center' }} textAlign={{ base: 'left', md: 'center' }}>
             <Text color={accentText} fontWeight="600" textTransform="uppercase" letterSpacing="0.12em" fontSize="sm">
-              Bora construir algo relevante
+              Vamos conversar
             </Text>
-            <Heading fontSize={{ base: '3xl', md: '5xl' }} maxW="12ch">
-              Tecnologia, conteudo e conversa boa no mesmo lugar.
+            <Heading fontSize={{ base: '3xl', md: '5xl' }} >
+              Bora bate um papo?
             </Heading>
             <Text color={mutedText} maxW="2xl" lineHeight="1.9">
-              Se voce quer acompanhar meu trabalho, trocar ideia sobre projetos ou falar sobre conteudo em tecnologia,
-              me chama por e-mail, WhatsApp ou nas redes do @aa2dev.
+              Quer acompanhar meu trabalho, falar sobre um projeto ou trocar ideia sobre tecnologia?
             </Text>
             <HStack spacing="4" wrap="wrap">
               <Link href="mailto:contato@a2dev.com.br">
