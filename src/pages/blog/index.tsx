@@ -13,7 +13,10 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import { RiArrowLeftLine } from 'react-icons/ri'
+import { Seo } from '../../components/Seo'
+import { StructuredData } from '../../components/StructuredData'
 import { BlogPostSummary, formatPostMonth, getPostMonthKey } from '../../lib/blog'
+import { getAbsoluteUrl, siteConfig } from '../../lib/seo'
 
 interface BlogIndexPageProps {
   posts: BlogPostSummary[]
@@ -49,6 +52,20 @@ function groupPostsByMonth(posts: BlogPostSummary[]): PostGroup[] {
 
 const BlogIndexPage: NextPage<BlogIndexPageProps> = ({ posts }) => {
   const groupedPosts = groupPostsByMonth(posts)
+  const pageTitle = 'Blog | aa.dev'
+  const pageDescription = 'Posts sobre programacao, tecnologia, arquitetura, ferramentas e carreira publicados no aa.dev.'
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Blog aa.dev',
+    description: pageDescription,
+    url: getAbsoluteUrl('/blog'),
+    inLanguage: 'pt-BR',
+    author: {
+      '@type': 'Person',
+      name: siteConfig.author,
+    },
+  }
   const borderColor = useColorModeValue('borderSubtle', 'borderSubtle')
   const primaryText = useColorModeValue('textPrimary', 'textPrimary')
   const mutedText = useColorModeValue('tocMuted', 'tocMuted')
@@ -56,7 +73,15 @@ const BlogIndexPage: NextPage<BlogIndexPageProps> = ({ posts }) => {
   const linkColor = useColorModeValue('brand.500', 'linkAccent')
 
   return (
-    <Container maxW="1380px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
+    <>
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        path="/blog"
+        image={getAbsoluteUrl('/api/og?title=Blog%20aa.dev&subtitle=Posts%20sobre%20programacao%20e%20tecnologia')}
+      />
+      <StructuredData data={blogSchema} />
+      <Container maxW="1380px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
       <Stack spacing={{ base: 10, md: 14 }}>
         <Stack spacing="5" align="center" textAlign="center">
           <Link href="/" passHref legacyBehavior>
@@ -160,6 +185,7 @@ const BlogIndexPage: NextPage<BlogIndexPageProps> = ({ posts }) => {
         </Box>
       </Stack>
     </Container>
+    </>
   )
 }
 

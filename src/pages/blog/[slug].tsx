@@ -1,5 +1,4 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import Link from 'next/link'
 import {
   Box,
@@ -15,7 +14,10 @@ import {
 } from '@chakra-ui/react'
 import { RiArrowLeftLine } from 'react-icons/ri'
 import { PostToc } from '../../components/blog/PostToc'
+import { Seo } from '../../components/Seo'
+import { StructuredData } from '../../components/StructuredData'
 import { BlogPost, formatPostDate } from '../../lib/blog'
+import { getAbsoluteUrl, siteConfig, stripHtmlTags } from '../../lib/seo'
 
 interface BlogPostPageProps {
   post: BlogPost
@@ -92,15 +94,43 @@ const articleStyles = {
 
 const BlogPostPage: NextPage<BlogPostPageProps> = ({ post }) => {
   const primaryText = useColorModeValue('textPrimary', 'textPrimary')
+  const description = post.excerpt || stripHtmlTags(post.contentHtml).slice(0, 160)
+  const publishedTime = new Date(`${post.date}T00:00:00`).toISOString()
+  const canonicalPath = `/blog/${post.slug}`
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description,
+    datePublished: publishedTime,
+    dateModified: publishedTime,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: siteConfig.author,
+    },
+    mainEntityOfPage: getAbsoluteUrl(canonicalPath),
+    url: getAbsoluteUrl(canonicalPath),
+    inLanguage: 'pt-BR',
+  }
   const mutedText = useColorModeValue('textMuted', 'textMuted')
   const ghostHover = useColorModeValue('gray.100', 'gray.700')
 
   return (
     <>
-      <Head>
-        <title>{post.title} | aa.dev</title>
-        <meta name="description" content={post.excerpt} />
-      </Head>
+      <Seo
+        title={post.title}
+        description={description}
+        path={canonicalPath}
+        type="article"
+        publishedTime={publishedTime}
+        author={post.author}
+        image={getAbsoluteUrl(`/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(description)}`)}
+      />
+      <StructuredData data={articleSchema} />
 
       <Container maxW="1380px" px={{ base: 5, md: 8 }} py={{ base: 8, md: 12 }}>
         <Flex align="flex-start" gap={{ base: 12, xl: 16 }} direction={{ base: 'column', xl: 'row' }}>
