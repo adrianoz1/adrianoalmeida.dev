@@ -31,6 +31,9 @@ import {
   RiYoutubeFill,
 } from 'react-icons/ri'
 import { NewsletterSignup } from '../components/NewsletterSignup'
+import { Seo } from '../components/Seo'
+import { StructuredData } from '../components/StructuredData'
+import { getAbsoluteUrl, siteConfig } from '../lib/seo'
 
 const channelHighlights = [
   {
@@ -88,6 +91,31 @@ const stats = [
 
 const Home: NextPage = () => {
   const pageBorder = useColorModeValue('gray.200', 'borderSubtle')
+  const pageTitle = 'Adriano Almeida | Programacao, tecnologia e conteudo dev'
+  const pageDescription =
+    'Programacao e tecnologia com linguagem clara e execucao real. Conteudos sobre desenvolvimento, arquitetura, ferramentas e carreira para devs que querem ir alem do raso.'
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Adriano Almeida',
+    alternateName: 'aa2dev',
+    url: siteConfig.url,
+    image: 'https://www.github.com/adrianoz1.png',
+    sameAs: [
+      'https://github.com/adrianoz1',
+      'https://www.youtube.com/@aa2dev',
+      'https://www.instagram.com/aa2dev',
+      'https://www.tiktok.com/@aa2dev',
+    ],
+    jobTitle: 'Programador e criador de conteudo tech',
+  }
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    inLanguage: 'pt-BR',
+  }
   const cardBg = useColorModeValue('white', 'surfaceBg')
   const altCardBg = useColorModeValue('gray.100', 'surfaceAltBg')
   const primaryText = useColorModeValue('gray.900', 'textPrimary')
@@ -99,7 +127,15 @@ const Home: NextPage = () => {
   const outlineBgHover = useColorModeValue('gray.100', 'gray.700')
 
   return (
-    <Box>
+    <>
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        path="/"
+        image={getAbsoluteUrl('/api/og?title=Adriano%20Almeida&subtitle=Programacao%2C%20tecnologia%20e%20conteudo%20dev')}
+      />
+      <StructuredData data={[personSchema, websiteSchema]} />
+      <Box>
       <Container maxW="1200px" px={{ base: 5, md: 8 }} py={{ base: 6, md: 8 }}>
         <Flex
           as="header"
@@ -451,7 +487,8 @@ const Home: NextPage = () => {
           </Stack>
         </Box>
       </Container>
-    </Box>
+      </Box>
+    </>
   )
 }
 
