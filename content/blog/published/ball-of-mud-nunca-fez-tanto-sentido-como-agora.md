@@ -1,3 +1,15 @@
+---
+title: "Ball of mud nunca fez tanto sentido como agora."
+excerpt: "Da noite para o dia, todo mundo virou engenheiro de software. A barreira caiu e o software perdeu valor. E o resultado = uma grande bola de lama. Isso nunca fez tanto sentido como agora."
+date: "2026-04-23"
+author: "Adriano Almeida"
+tags: ["digest", "tech-news", "automation", "techcrunch", "startups", "technology"]
+coverTitle: "Apenas ideias"
+canonicalSource: "https://github.com/adrianoz1/adrianoalmeida.dev"
+draft: true
+automation: "not"
+---
+
 # Ball of mud nunca fez tanto sentido como agora.
 
 ### Intro

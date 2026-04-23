@@ -111,7 +111,7 @@ const Home: NextPage = () => {
       'https://www.instagram.com/aa2dev',
       'https://www.tiktok.com/@aa2dev',
     ],
-    jobTitle: 'Programador e criador de conteudo tech',
+    jobTitle: 'Programador ',
   }
   const websiteSchema = {
     '@context': 'https://schema.org',
@@ -156,7 +156,7 @@ const Home: NextPage = () => {
               aa<Text as="span" color="brand.400">.</Text>dev
             </Text>
             <Text color={mutedText} fontSize="sm" textAlign={{ base: 'center', md: 'left' }}>
-              programador e produtor de conteudo com visao pratica
+              
             </Text>
           </VStack>
 
@@ -189,10 +189,7 @@ const Home: NextPage = () => {
             <Stack spacing="7" align={{ base: 'center', md: 'stretch' }}>
               <HStack spacing="3" wrap="wrap" justify={{ base: 'center', md: 'flex-start' }}>
                 <Badge bg={subtleBadgeBg} color={accentText} px="3" py="1.5" borderRadius="full">
-                  Programador e criador de conteudo tech
-                </Badge>
-                <Badge bg={subtleBadgeBg} color={mutedText} px="3" py="1.5" borderRadius="full">
-                  @aa2dev
+                  Programador 
                 </Badge>
               </HStack>
 
@@ -206,7 +203,8 @@ const Home: NextPage = () => {
                   mx={{ base: 'auto', md: '0' }}
                   textAlign={{ base: 'center', md: 'left' }}
                 >
-                  Conteudo para dev que quer entregar melhor.
+                  O que você encontra aqui
+
                 </Heading>
 
                 <Text
@@ -216,8 +214,7 @@ const Home: NextPage = () => {
                   lineHeight="1.8"
                   textAlign={{ base: 'center', md: 'left' }}
                 >
-                  Programacao, arquitetura, ferramentas e carreira com visao pratica. Eu transformo experiencia real
-                  de produto e engenharia em conteudo claro, objetivo e util para o dia a dia de quem desenvolve.
+                  Programação, arquitetura, ferramentas e carreira com visão prática.
                 </Text>
               </Stack>
 
@@ -238,32 +235,8 @@ const Home: NextPage = () => {
                     Explorar blog
                   </Button>
                 </NextLink>
-                <Link href="https://www.youtube.com/@aa2dev" isExternal display="block" width="100%">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    width="100%"
-                    minH="64px"
-                    _hover={{ bg: outlineBgHover }}
-
-                    rightIcon={<Icon as={RiArrowRightUpLine} />}
-                  >
-                     YouTube
-                  </Button>
-                </Link>
-                <Link href="mailto:contato@a2dev.com.br" display="block" width="100%">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    color={primaryText}
-                    borderColor={pageBorder}
-                    width="100%"
-                    minH="64px"
-                    _hover={{ bg: outlineBgHover }}
-                  >
-                    Falar comigo
-                  </Button>
-                </Link>
+               
+               
               </SimpleGrid>
 
 
@@ -283,10 +256,10 @@ const Home: NextPage = () => {
                 <HStack justify="space-between" align="flex-start">
                   <VStack align="flex-start" spacing="1">
                     <Text color={mutedText} fontSize="sm" textTransform="uppercase" letterSpacing="0.16em">
-                      Clareza e pratica
+                      Prática
                     </Text>
                     <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }}>
-                      O que voce encontra aqui
+                      Meu github
                     </Heading>
                   </VStack>
 
@@ -311,76 +284,7 @@ const Home: NextPage = () => {
           </GridItem>
         </Grid>
 
-        <Box mt={{ base: 20, md: 28 }}>
-          <Stack spacing="4" mb="8">
-            <Text color={accentText} fontWeight="600" letterSpacing="0.12em" textTransform="uppercase" fontSize="sm">
-              Escolha o formato
-            </Text>
-            <Heading fontSize={{ base: '3xl', md: '5xl' }} maxW="10ch">
-              Onde acompanhar o meu conteudo
-            </Heading>
-            <Text color={mutedText} maxW="2xl" lineHeight="1.8">
-              Cada canal tem uma funcao clara para voce aprender no ritmo que fizer mais sentido.
-            </Text>
-          </Stack>
-
-          <SimpleGrid columns={{ base: 1, lg: 3 }} spacing="6">
-            {channelHighlights.map((channel) => (
-              <Box
-                key={channel.name}
-                p={{ base: 6, md: 7 }}
-                borderRadius="28px"
-                bg={cardBg}
-                border="1px solid"
-                borderColor={pageBorder}
-                boxShadow={solidShadow}
-              >
-                <Stack spacing="5">
-                  <HStack spacing="4" align="flex-start">
-                    <Flex
-                      width="12"
-                      height="12"
-                      borderRadius="2xl"
-                      align="center"
-                      justify="center"
-                      bg={altCardBg}
-                      color="brand.400"
-                      flexShrink={0}
-                    >
-                      <Icon as={channel.icon} boxSize="6" />
-                    </Flex>
-                    <Box>
-                      <Heading as="h3" fontSize="2xl">
-                        {channel.name}
-                      </Heading>
-                      <Text color={mutedText}>{channel.handle}</Text>
-                    </Box>
-                  </HStack>
-
-                  <Text color={accentText} fontWeight="600" fontSize="sm" textTransform="uppercase" letterSpacing="0.1em">
-                    {channel.eyebrow}
-                  </Text>
-
-                  <Text color={mutedText} lineHeight="1.8">
-                    {channel.description}
-                  </Text>
-
-                  <Link href={channel.href} isExternal alignSelf="flex-start">
-                    <Button
-                      variant="outline"
-                      borderColor={pageBorder}
-                      color={primaryText}
-                      rightIcon={<Icon as={RiArrowRightUpLine} />}
-                      _hover={{ bg: outlineBgHover }}
-                    >
-                      Acessar canal
-                    </Button>
-                  </Link>
-                </Stack>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
+       
 
         <Box
           mt={{ base: 20, md: 28 }}
