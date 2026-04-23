@@ -12,11 +12,11 @@ automation: "not"
 
 # Ball of mud nunca fez tanto sentido como agora.
 
-### Intro
+## Intro
 
 Da noite para o dia, todo mundo virou engenheiro de software. A barreira caiu e o software perdeu valor. E o resultado = uma grande bola de lama. Isso nunca fez tanto sentido como agora.
 
-### Dois grupos, mesmo lixo produzido
+## Dois grupos, mesmo lixo produzido
 
 Acho que todo mundo percebeu que 2026 é um ano diferente.
 Passamos por muitos anos estagnados em termos de IA.
@@ -52,7 +52,7 @@ E o que eu tenho pensado? Bom, este artigo, bagunçado e com ideias meio largada
 
 Mas acredito que este blog pode me trazer vários pontos de reflexão e, assim como no passado, ser um espaço para "jogar" minhas ideias, organizar, expressar e exercitar meu lado criativo. Até porque, cada vez mais, as pessoas estão criando mais e, ao mesmo tempo, criando nada.
 
-# Conclusão
+## Conclusão
 
 Pouca coisa realmente tem valor, mas neste momento, em que o volume é mais importante que a qualidade e o valor entregue, quem consegue 20, 30 minutos para sentar e depositar ideias em palavras em um blog — não em um prompt — está mantendo o pé no chão. Está criando valor para si mesmo. Não é necessário o tempo todo demonstrar valor para os outros, mas sim mostrar valor para si mesmo. Mostrar para si mesmo que você tem valor, não criando um monte de coisa inútil, mas talvez usando a IA para criar coisas úteis — e, acima de tudo, usar a IA para aprender mais. O conhecimento não deve ser perdido, ele deve ser aprimorado sempre. Parar de pensar não é a solução; é simplesmente aceitar o caos e se jogar nessa grande bola de lama.
 
